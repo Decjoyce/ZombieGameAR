@@ -21,6 +21,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     //Weapons
     public WeaponType_Base currentWeapon;
+    public WeaponType_Base defaultWeapon;
     public TextMeshProUGUI text;
 
     void Awake()
