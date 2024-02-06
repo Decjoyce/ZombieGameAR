@@ -64,6 +64,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
             case "PISTOL":
                 currentState = state_Pistol;
                 break;
+            case "Shotgun":
+                currentState = state_Shotgun;
+                break;
             default:
                 Debug.LogError("INVALID STATE: " + newState);
                 break;
@@ -75,6 +78,12 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     {
         if (context.performed)
             currentState.TouchInput(this);
+    }
+
+    public void PickUpWeapon(WeaponType_Base newWeapon)
+    {
+        currentWeapon = newWeapon;
+        SwitchState(currentWeapon.type);
     }
 
     public void DebugShoot()

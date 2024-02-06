@@ -14,6 +14,9 @@ public class Zombie_FPS : MonoBehaviour
     public ZombieState_Attack state_attack = new ZombieState_Attack();
     public ZombieState_Stagger state_stagger = new ZombieState_Stagger();
 
+    public GameObject[] availableDrops;
+    [SerializeField] float dropChance;
+
     public float speed_movement;
     public float speed_attack;
     public float damage;
@@ -71,5 +74,9 @@ public class Zombie_FPS : MonoBehaviour
         currentState.EnterState(this);
     }
 
-
+    public void HandleDrops()
+    {
+        if(Random.value <= dropChance)
+            Instantiate(availableDrops[Random.Range(0, availableDrops.Length)], transform.position, transform.rotation);
+    }
 }

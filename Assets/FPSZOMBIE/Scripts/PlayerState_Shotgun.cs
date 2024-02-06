@@ -36,10 +36,7 @@ public class PlayerState_Shotgun : PlayerState_Base
 
         if(canShoot && currentAmmo > 0)
         {
-            for (int i = 0; i < 7; i++)
-            {
-                ShootShotGun(manager);
-            }
+            ShootShotGun(manager);
             currentAmmo--;
             if (currentAmmo > 0)
             {
@@ -57,22 +54,32 @@ public class PlayerState_Shotgun : PlayerState_Base
 
     void ShootShotGun(Player_FPS manager)
     {
-
-        Vector3 horiSpread = Vector3.right * Random.Range(-0.75f, -0.75f);
-        Vector3 vertSpread = Vector3.right * Random.Range(-0.75f, 0.75f);
+        int zombieHits = 0;            
         RaycastHit hit;
-        if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward + horiSpread + vertSpread, out hit, manager.currentWeapon.range))
+        Zombie_FPS hitZombie = null;
+        for (int i = 0; i < 7; i++)
         {
-            if (hit.transform.CompareTag("Zombie"))
+            Vector3 horiSpread = Vector3.right * Random.Range(-0.7f, 0.7f);
+            Vector3 vertSpread = Vector3.up * Random.Range(-0.7f, 0.7f);
+
+            if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward + (horiSpread + vertSpread), out hit, manager.currentWeapon.range))
             {
-                Zombie_FPS hitZombie = hit.transform.GetComponent<Zombie_FPS>();
-                hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage);
+                if (hit.transform.CompareTag("Zombie"))
+                {
+                    hitZombie = hit.transform.GetComponent<Zombie_FPS>();
+                    zombieHits++;                
+                    Debug.Log("Hit " + hit.transform.name);
+                }
+                DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
 
             }
-            DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
-            Debug.Log("Hit " + hit.transform.name);
+            Debug.DrawRay(manager.cam.transform.position, manager.cam.transform.forward + horiSpread + vertSpread, Random.ColorHSV(0, 1, 1, 1, 1, 1, 1, 1), 10f);
         }
-        Debug.DrawRay(manager.cam.transform.position, manager.cam.transform.forward + horiSpread + vertSpread, Color.red, 10f);
+        if(zombieHits > 0)
+        {
+            hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage * zombieHits);
+        }
+
     }
 
 }

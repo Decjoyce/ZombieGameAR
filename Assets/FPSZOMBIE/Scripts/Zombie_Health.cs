@@ -25,6 +25,7 @@ public class Zombie_Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            zombie.HandleDrops();
             Destroy(gameObject);
         }
     }

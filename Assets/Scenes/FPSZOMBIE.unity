@@ -480,7 +480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &106981267
@@ -5680,7 +5680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1195794861
@@ -7842,7 +7842,6 @@ GameObject:
   - component: {fileID: 1876098230}
   - component: {fileID: 1876098229}
   - component: {fileID: 1876098231}
-  - component: {fileID: 1876098232}
   m_Layer: 0
   m_Name: FauxPlayer
   m_TagString: Player
@@ -7947,23 +7946,6 @@ MonoBehaviour:
   cam: {fileID: 1076483321}
   currentWeapon: {fileID: 11400000, guid: b0fbdb957d8348e4cb2588e3ad7d14bf, type: 2}
   text: {fileID: 921627463}
---- !u!114 &1876098232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876098226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 040b41ff9379f5d4bac150798ce104e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 6066130053918307347, guid: 9d3c90aaced7d9f44a68bd129066c214,
-    type: 3}
-  Explosion: {fileID: 6066130053918307347, guid: ba5d4822988827b4187e24ac52f5a0ab,
-    type: 3}
-  Camera: {fileID: 1076483321}
 --- !u!1 &1896256968
 GameObject:
   m_ObjectHideFlags: 0
