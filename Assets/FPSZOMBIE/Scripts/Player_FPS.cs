@@ -10,6 +10,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     PlayerControls playerControls;
 
     public Transform cam;
+    [SerializeField] Transform firePoint;
+    public GameObject effects;
+    [SerializeField] GameObject bulletTrail;
 
     //States
     PlayerState_Base currentState;
@@ -84,6 +87,17 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     {
         currentWeapon = newWeapon;
         SwitchState(currentWeapon.type);
+    }
+
+    public void SpawnBulletTrail(Vector3 endPos)
+    {
+        GameObject newBulletTrail = Instantiate(bulletTrail, cam.transform.position, cam.transform.rotation, effects.transform);
+        LineRenderer trail = newBulletTrail.GetComponent<LineRenderer>();
+        trail.SetPosition(0, firePoint.position);
+        trail.SetPosition(1, cam.transform.position + endPos);
+        trail.widthMultiplier = currentWeapon.trailSize;
+        trail.colorGradient = currentWeapon.trailColor;
+        Destroy(newBulletTrail, 2f);
     }
 
     public void DebugShoot()
