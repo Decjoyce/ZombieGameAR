@@ -7542,6 +7542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1076483321}
+  currentWeapon: {fileID: 11400000, guid: 598f8aaeb833bf14e84d65d7ab34df87, type: 2}
 --- !u!114 &1876098232
 MonoBehaviour:
   m_ObjectHideFlags: 0

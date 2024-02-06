@@ -57,7 +57,6 @@ public class Zombie_FPS : MonoBehaviour
         {
             case "FOLLOW":
                 currentState = state_follow;
-                currentState.EnterState(this);
                 break;
             case "ATTACK":
                 currentState = state_attack;

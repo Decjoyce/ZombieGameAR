@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1c6ebaa4582ec4788352f62ccc5f22, type: 3}
+  m_Name: Weapon_Pistol
+  m_EditorClassIdentifier: 
+  damage: 1
+  fireRate: 5
+  reloadSpeed: 1
+  magCapacity: 7
+  unlimited: 1
+  crosshair: {fileID: 0}
+  impact: {fileID: 6066130053918307347, guid: ba5d4822988827b4187e24ac52f5a0ab, type: 3}
