@@ -6,6 +6,7 @@ public class Zombie_FPS : MonoBehaviour
 {
     public GameObject player;
     public PlayerHealth playerHealth;
+    public Animator anim;
 
     public Zombie_Health zombieHealth;
 
@@ -60,9 +61,11 @@ public class Zombie_FPS : MonoBehaviour
         {
             case "FOLLOW":
                 currentState = state_follow;
+                anim.SetBool("IsAttacking", false);
                 break;
             case "ATTACK":
                 currentState = state_attack;
+                anim.SetBool("IsAttacking", true);
                 break;
             case "STAGGER":
                 currentState = state_stagger;
