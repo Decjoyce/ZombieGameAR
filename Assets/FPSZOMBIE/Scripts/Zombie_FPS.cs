@@ -14,6 +14,7 @@ public class Zombie_FPS : MonoBehaviour
     public ZombieState_Follow state_follow = new ZombieState_Follow();
     public ZombieState_Attack state_attack = new ZombieState_Attack();
     public ZombieState_Stagger state_stagger = new ZombieState_Stagger();
+    public ZombieState_Dead state_dead = new ZombieState_Dead();
 
     public GameObject[] availableDrops;
     [SerializeField] float dropChance;
@@ -71,6 +72,9 @@ public class Zombie_FPS : MonoBehaviour
             case "STAGGER":
                 currentState = state_stagger;
                 anim.SetBool("IsHit", true);
+                break;
+            case "DEAD":
+                currentState = state_dead;
                 break;
             default:
                 Debug.LogError("INVALID STATE: " + newState);

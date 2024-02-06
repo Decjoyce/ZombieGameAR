@@ -22,6 +22,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     //Weapons
     public WeaponType_Base currentWeapon;
     public WeaponType_Base defaultWeapon;
+    public WeaponType_Base shotguntWeapon;
     public TextMeshProUGUI text;
 
     void Awake()
@@ -45,7 +46,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     void Start()
     {
-        currentState = state_Shotgun;
+        currentState = state_Pistol;
         currentState.EnterState(this);
     }
 
@@ -68,7 +69,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
             case "PISTOL":
                 currentState = state_Pistol;
                 break;
-            case "Shotgun":
+            case "SHOTGUN":
                 currentState = state_Shotgun;
                 break;
             default:
@@ -84,9 +85,16 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
             currentState.TouchInput(this);
     }
 
-    public void PickUpWeapon(WeaponType_Base newWeapon)
+    //Debug
+    public void PickUpWeapon(/*WeaponType_Base newWeapon*/)
     {
-        currentWeapon = newWeapon;
+        currentWeapon = shotguntWeapon;
+        SwitchState(currentWeapon.type);
+    }
+
+    public void ReturnToDefaultWeapon()
+    {
+        currentWeapon = defaultWeapon;
         SwitchState(currentWeapon.type);
     }
 
@@ -95,7 +103,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
         GameObject newBulletTrail = Instantiate(bulletTrail, cam.transform.position, cam.transform.rotation, effects.transform);
         LineRenderer trail = newBulletTrail.GetComponent<LineRenderer>();
         trail.SetPosition(0, firePoint.position);
-        trail.SetPosition(1, cam.transform.position + endPos);
+        trail.SetPosition(1, endPos);
         trail.widthMultiplier = currentWeapon.trailSize;
         trail.colorGradient = currentWeapon.trailColor;
         Destroy(newBulletTrail, 2f);

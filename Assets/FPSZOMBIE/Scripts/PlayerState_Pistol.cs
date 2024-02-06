@@ -34,7 +34,6 @@ public class PlayerState_Pistol : PlayerState_Base
     public override void TouchInput(Player_FPS manager)
     {
         DebugTextDisplayer.instance.ChangeText("Shot");
-
         if(canShoot && currentAmmo > 0)
         {
             if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward, out hit, manager.currentWeapon.range))
@@ -46,7 +45,11 @@ public class PlayerState_Pistol : PlayerState_Base
 
                     DebugTextDisplayer.instance.ChangeText("Hit Zombie");
                 }
+                Debug.Log("HIT");
+                manager.SpawnBulletTrail(hit.point);
             }
+            else
+                manager.SpawnBulletTrail(manager.cam.transform.position + manager.cam.transform.forward * manager.currentWeapon.range);
             currentAmmo--;
             if (currentAmmo > 0)
             {

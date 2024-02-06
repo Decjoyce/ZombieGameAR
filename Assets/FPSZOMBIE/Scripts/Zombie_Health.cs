@@ -28,6 +28,7 @@ public class Zombie_Health : MonoBehaviour
         {
             zombie.HandleDrops();
             zombie.anim.SetBool("IsDead", true);
+            zombie.SwitchState("DEAD");
             Destroy(gameObject, DeadSeconds);
         }
     }

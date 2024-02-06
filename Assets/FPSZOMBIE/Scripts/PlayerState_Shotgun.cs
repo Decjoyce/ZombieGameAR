@@ -67,13 +67,14 @@ public class PlayerState_Shotgun : PlayerState_Base
                 if (hit.transform.CompareTag("Zombie"))
                 {
                     hitZombie = hit.transform.GetComponent<Zombie_FPS>();
-                    zombieHits++;                
+                    zombieHits++;
                     Debug.Log("Hit " + hit.transform.name);
                 }
                 DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
+                manager.SpawnBulletTrail(hit.point);
             }
-            Debug.DrawRay(manager.cam.transform.position, manager.cam.transform.forward + horiSpread + vertSpread, Random.ColorHSV(0, 1, 1, 1, 1, 1, 1, 1), 10f);
-            manager.SpawnBulletTrail(manager.cam.transform.forward * manager.currentWeapon.range + (horiSpread + vertSpread));
+            else
+                manager.SpawnBulletTrail(manager.cam.transform.position + manager.cam.transform.forward * manager.currentWeapon.range + (horiSpread + vertSpread));
         }
         if(zombieHits > 0)
         {
