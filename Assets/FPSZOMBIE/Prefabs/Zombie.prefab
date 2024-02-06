@@ -2821,6 +2821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   currentHealth: 3
+  DeadSeconds: 4
 --- !u!54 &3336382426878154527
 Rigidbody:
   m_ObjectHideFlags: 0

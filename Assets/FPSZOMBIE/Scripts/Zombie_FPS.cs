@@ -62,6 +62,7 @@ public class Zombie_FPS : MonoBehaviour
             case "FOLLOW":
                 currentState = state_follow;
                 anim.SetBool("IsAttacking", false);
+                anim.SetBool("IsHit", false);
                 break;
             case "ATTACK":
                 currentState = state_attack;
@@ -69,6 +70,7 @@ public class Zombie_FPS : MonoBehaviour
                 break;
             case "STAGGER":
                 currentState = state_stagger;
+                anim.SetBool("IsHit", true);
                 break;
             default:
                 Debug.LogError("INVALID STATE: " + newState);

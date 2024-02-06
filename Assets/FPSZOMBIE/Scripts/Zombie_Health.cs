@@ -8,6 +8,7 @@ public class Zombie_Health : MonoBehaviour
     Zombie_FPS zombie;
     public int health;
     public int currentHealth;
+    public float DeadSeconds;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,7 +28,7 @@ public class Zombie_Health : MonoBehaviour
         {
             zombie.HandleDrops();
             zombie.anim.SetBool("IsDead", true);
-            Destroy(gameObject);
+            Destroy(gameObject, DeadSeconds);
         }
     }
 
