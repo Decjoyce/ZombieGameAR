@@ -19,6 +19,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(spawnDelay);
         Instantiate(zombie, transform.position, transform.rotation);
+        StartCoroutine(SpawnZombie());
     }
 
 }

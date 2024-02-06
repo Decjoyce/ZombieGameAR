@@ -47,5 +47,6 @@ public class ZombieState_Attack : ZombieState_Base
     void Attack(Zombie_FPS manager)
     {
         manager.playerHealth.TakeDamage(manager.damage);
+        DebugTextDisplayer.instance.ChangeText("Zombie Attack");
     }
 }

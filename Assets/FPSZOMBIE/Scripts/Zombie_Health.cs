@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Zombie_Health : MonoBehaviour
 {
+    Zombie_FPS zombie;
     public int health;
     public int currentHealth;
 
@@ -12,16 +13,20 @@ public class Zombie_Health : MonoBehaviour
     void Awake()
     {
         health = currentHealth;
+        zombie = GetComponent<Zombie_FPS>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(currentHealth);
 
-        if(currentHealth <= 0)
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        zombie.SwitchState("STAGGER");
+
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
     }
+
 }

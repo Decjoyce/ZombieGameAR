@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    Zombie_Health zombieHealth;
     public GameObject projectile;
     public GameObject Explosion;
     public Transform Camera;
     RaycastHit hit;
     // Start is called before the first frame update
-    void Start()
-    {
-        zombieHealth = GetComponent<Zombie_Health>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-      if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
 
-            if(Physics.Raycast(Camera.transform.position, Camera.transform.forward, out hit))
+    }
+
+    public void ShootGun()
+    {
+        DebugTextDisplayer.instance.ChangeText("Shot");
+        if (Physics.Raycast(Camera.transform.position, Camera.transform.forward, out hit))
+        {
+            if (hit.transform.CompareTag("Zombie"))
             {
-                zombieHealth.currentHealth -= 1;
-                Destroy(hit.transform.gameObject);
-                Instantiate(Explosion, hit.transform.position, hit.transform.rotation);
-                Destroy(Explosion, 2f);
-                Debug.Log("Shoot");
-            
+                Zombie_FPS hitZombie = hit.transform.GetComponent<Zombie_FPS>();
+                hitZombie.zombieHealth.TakeDamage(1);
+                //Destroy(hit.transform.gameObject);
+                GameObject newExplosion = Instantiate(Explosion, hit.point, hit.transform.rotation);
+                Destroy(newExplosion, 0.5f);
+                DebugTextDisplayer.instance.ChangeText("Hit Zombie");
             }
         }
     }

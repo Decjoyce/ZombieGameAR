@@ -1,0 +1,46 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "BaseControls",
+            "id": "6f1ce699-bf9d-47c1-b884-59d687f2cfb9",
+            "actions": [
+                {
+                    "name": "SingleTouch",
+                    "type": "Button",
+                    "id": "baa29b1b-2162-4c3d-9c8c-8ae9d730ea84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "70dbf2f5-634d-4f52-ba6e-e8772d859d7b",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "SingleTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Touch",
+            "bindingGroup": "Touch",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
