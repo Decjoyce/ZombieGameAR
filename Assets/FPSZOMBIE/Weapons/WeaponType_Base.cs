@@ -8,6 +8,7 @@ public class WeaponType_Base : ScriptableObject
     //Stats
     public int damage;
     public float fireRate;
+    public float range;
     public float reloadSpeed;
     public int magCapacity;
     public bool unlimited;

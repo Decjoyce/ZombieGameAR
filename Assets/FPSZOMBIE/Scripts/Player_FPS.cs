@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,9 +14,11 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     //States
     PlayerState_Base currentState;
     public PlayerState_Pistol state_Pistol = new PlayerState_Pistol();
+    public PlayerState_Shotgun state_Shotgun = new PlayerState_Shotgun();
 
     //Weapons
     public WeaponType_Base currentWeapon;
+    public TextMeshProUGUI text;
 
     void Awake()
     {
@@ -38,7 +41,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     void Start()
     {
-        currentState = state_Pistol;
+        currentState = state_Shotgun;
         currentState.EnterState(this);
     }
 
@@ -72,5 +75,10 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     {
         if (context.performed)
             currentState.TouchInput(this);
+    }
+
+    public void DebugShoot()
+    {
+        currentState.TouchInput(this);
     }
 }

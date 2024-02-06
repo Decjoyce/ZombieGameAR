@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerState_Pistol : PlayerState_Base
+public class PlayerState_Shotgun : PlayerState_Base
 {
     float attackDelay;
     bool canShoot;
     float reloadDelay;
     int currentAmmo;
-    RaycastHit hit;
-
 
     public override void EnterState(Player_FPS manager)
     {
@@ -23,7 +22,7 @@ public class PlayerState_Pistol : PlayerState_Base
             canShoot = true;
             DebugTextDisplayer.instance.ChangeText("Can Shoot!");
         }
-        if(currentAmmo <= 0 && Time.time >= reloadDelay)
+        if (currentAmmo <= 0 && Time.time >= reloadDelay)
         {
             currentAmmo = manager.currentWeapon.magCapacity;
             DebugTextDisplayer.instance.ChangeText("Reloaded!");
@@ -37,15 +36,9 @@ public class PlayerState_Pistol : PlayerState_Base
 
         if(canShoot && currentAmmo > 0)
         {
-            if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward, out hit, manager.currentWeapon.range))
+            for (int i = 0; i < 7; i++)
             {
-                if (hit.transform.CompareTag("Zombie"))
-                {
-                    Zombie_FPS hitZombie = hit.transform.GetComponent<Zombie_FPS>();
-                    hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage);
-
-                    DebugTextDisplayer.instance.ChangeText("Hit Zombie");
-                }
+                ShootShotGun(manager);
             }
             currentAmmo--;
             if (currentAmmo > 0)
@@ -61,4 +54,25 @@ public class PlayerState_Pistol : PlayerState_Base
         }
 
     }
+
+    void ShootShotGun(Player_FPS manager)
+    {
+
+        Vector3 horiSpread = Vector3.right * Random.Range(-0.75f, -0.75f);
+        Vector3 vertSpread = Vector3.right * Random.Range(-0.75f, 0.75f);
+        RaycastHit hit;
+        if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward + horiSpread + vertSpread, out hit, manager.currentWeapon.range))
+        {
+            if (hit.transform.CompareTag("Zombie"))
+            {
+                Zombie_FPS hitZombie = hit.transform.GetComponent<Zombie_FPS>();
+                hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage);
+
+            }
+            DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
+            Debug.Log("Hit " + hit.transform.name);
+        }
+        Debug.DrawRay(manager.cam.transform.position, manager.cam.transform.forward + horiSpread + vertSpread, Color.red, 10f);
+    }
+
 }
