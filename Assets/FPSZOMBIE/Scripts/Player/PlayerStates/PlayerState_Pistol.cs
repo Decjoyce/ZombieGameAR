@@ -51,6 +51,7 @@ public class PlayerState_Pistol : PlayerState_Base
             else
                 manager.SpawnBulletTrail(manager.cam.transform.position + manager.cam.transform.forward * manager.currentWeapon.range);
             currentAmmo--;
+            Handheld.Vibrate();
             if (currentAmmo > 0)
             {
                 canShoot = false;

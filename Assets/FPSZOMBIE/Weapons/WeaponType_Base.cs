@@ -14,6 +14,7 @@ public class WeaponType_Base : ScriptableObject
     public float range;
     public float reloadSpeed;
     public int magCapacity;
+    public int reserveAmmo;
     public bool unlimited;
 
     [Header("Assets")]

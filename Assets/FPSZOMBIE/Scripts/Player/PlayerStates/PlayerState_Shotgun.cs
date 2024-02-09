@@ -9,10 +9,13 @@ public class PlayerState_Shotgun : PlayerState_Base
     bool canShoot;
     float reloadDelay;
     int currentAmmo;
+    int reserveAmmo;
+    bool emptyGun;
 
     public override void EnterState(Player_FPS manager)
     {
         currentAmmo = manager.currentWeapon.magCapacity;
+        reserveAmmo = manager.currentWeapon.reserveAmmo;
     }
 
     public override void FrameUpdate(Player_FPS manager)
@@ -24,6 +27,12 @@ public class PlayerState_Shotgun : PlayerState_Base
         }
         if (currentAmmo <= 0 && Time.time >= reloadDelay)
         {
+            reserveAmmo--;
+            if (!emptyGun && reserveAmmo == 0)
+            {
+                emptyGun = true;
+                manager.ReturnToDefaultWeapon();
+            }
             currentAmmo = manager.currentWeapon.magCapacity;
             DebugTextDisplayer.instance.ChangeText("Reloaded!");
         }
