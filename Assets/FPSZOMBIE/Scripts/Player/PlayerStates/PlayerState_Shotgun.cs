@@ -31,10 +31,15 @@ public class PlayerState_Shotgun : PlayerState_Base
             if (!emptyGun && reserveAmmo == 0)
             {
                 emptyGun = true;
+                DebugTextDisplayer.instance.ChangeText("Out of Ammo");
                 manager.ReturnToDefaultWeapon();
             }
-            currentAmmo = manager.currentWeapon.magCapacity;
-            DebugTextDisplayer.instance.ChangeText("Reloaded!");
+            else
+            {
+                currentAmmo = manager.currentWeapon.magCapacity;
+                DebugTextDisplayer.instance.ChangeText("Reloaded!");
+            }
+
         }
         manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
     }

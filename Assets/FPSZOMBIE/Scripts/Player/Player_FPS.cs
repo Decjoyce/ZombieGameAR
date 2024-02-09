@@ -16,14 +16,21 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     //States
     PlayerState_Base currentState;
+    public PlayerState_Hand state_Hand = new PlayerState_Hand();
     public PlayerState_Pistol state_Pistol = new PlayerState_Pistol();
     public PlayerState_Shotgun state_Shotgun = new PlayerState_Shotgun();
 
     //Weapons
     public WeaponType_Base currentWeapon;
     public WeaponType_Base defaultWeapon;
-    public WeaponType_Base shotguntWeapon;
     public TextMeshProUGUI text;
+
+    float attackDelay;
+    bool canShoot;
+    float reloadDelay;
+    int currentAmmo;
+    int reserveAmmo;
+    bool emptyGun;
 
     void Awake()
     {
@@ -66,6 +73,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
         currentState.ExitState(this);
         switch (newState)
         {
+            case "HAND":
+                currentState = state_Hand;
+                break;
             case "PISTOL":
                 currentState = state_Pistol;
                 break;
@@ -86,9 +96,14 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     }
 
     //Debug
-    public void PickUpWeapon(/*WeaponType_Base newWeapon*/)
+    public void PickUpWeapon(WeaponType_Base newWeapon)
     {
-        currentWeapon = shotguntWeapon;
+        currentWeapon = newWeapon;
+        SwitchState(currentWeapon.type);
+    }
+
+    public void ReturnToCurrentWeaponState()
+    {
         SwitchState(currentWeapon.type);
     }
 

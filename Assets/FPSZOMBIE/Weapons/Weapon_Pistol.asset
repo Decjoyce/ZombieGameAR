@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Weapon_Pistol
   m_EditorClassIdentifier: 
   type: PISTOL
-  damage: 1
+  damage: 20
   fireRate: 2
   range: 20
   reloadSpeed: 0.25
   magCapacity: 7
+  reserveAmmo: 0
   unlimited: 1
   crosshair: {fileID: 0}
   impact: {fileID: 6066130053918307347, guid: ba5d4822988827b4187e24ac52f5a0ab, type: 3}
