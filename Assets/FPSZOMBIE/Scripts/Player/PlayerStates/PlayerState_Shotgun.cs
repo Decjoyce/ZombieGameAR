@@ -30,7 +30,7 @@ public class PlayerState_Shotgun : PlayerState_Base
             currentAmmo = manager.currentWeapon.magCapacity;
             DebugTextDisplayer.instance.ChangeText("Reloaded!");
         }
-        manager.text.text = reserveAmmo + "||" + currentAmmo;
+        manager.text.text = reserveAmmo + " | " + currentAmmo;
     }
 
     public override void TouchInput(Player_FPS manager)
@@ -72,9 +72,9 @@ public class PlayerState_Shotgun : PlayerState_Base
 
             if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward + (horiSpread + vertSpread), out hit, manager.currentWeapon.range))
             {
-                if (hit.transform.CompareTag("Zombie/TURSO") || hit.transform.CompareTag("Zombie/Head"))
+                if (hit.transform.CompareTag("Zombie/Turso") || hit.transform.CompareTag("Zombie/Head"))
                 {
-                    hitZombie = hit.transform.GetComponent<Zombie_FPS>();
+                    hitZombie = hit.transform.GetComponentInParent<Zombie_FPS>();
                     zombieHits++;
                     Debug.Log("Hit " + hit.transform.name);
                 }
