@@ -15,7 +15,7 @@ MonoBehaviour:
   type: SHOTGUN
   damage: 3
   fireRate: 0.5
-  range: 1
+  range: 2
   reloadSpeed: 0.25
   magCapacity: 5
   reserveAmmo: 3
