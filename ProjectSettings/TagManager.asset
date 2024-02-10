@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Zombie
   - WeaponDrop
+  - Zombie/Turso
+  - Zombie/Head
+  - Zombie
   layers:
   - Default
   - TransparentFX

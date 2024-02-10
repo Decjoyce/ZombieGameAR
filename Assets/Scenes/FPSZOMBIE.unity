@@ -7433,7 +7433,7 @@ MonoBehaviour:
     type: 3}
   arPlane: {fileID: 793615917}
   ogNumZombies: 6
-  zombieIncreaseMultiplier: 0
+  zombieIncreaseMultiplier: 5
 --- !u!1001 &1362734343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7854,19 +7854,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1380720544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1360949257}
-        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
-        m_MethodName: IncreaseCombo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1380720544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9159,19 +9147,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1722426942}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1360949255}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: START
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1722426942
 MonoBehaviour:
   m_ObjectHideFlags: 0

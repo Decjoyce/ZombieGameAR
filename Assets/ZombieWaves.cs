@@ -22,7 +22,7 @@ public class ZombieManager : MonoBehaviour
 
     [SerializeField] Transform arPlane;
     MeshFilter[] arPlanes;
-    List<GameObject> zombies = new List<GameObject>();
+    private List<GameObject> zombies = new List<GameObject>();
 
 
     int numZombies = 6;
@@ -40,7 +40,6 @@ public class ZombieManager : MonoBehaviour
     {
         for (int i = 0; i < numZombies; i++)
         {
-            Debug.Log("Trynna sdsdsds");
             StartCoroutine(SpawnZombie(i));
         }
     }
@@ -50,20 +49,19 @@ public class ZombieManager : MonoBehaviour
         StopAllCoroutines();
         foreach(GameObject zombie in zombies)
         {
-            zombies.Remove(zombie);
-            Destroy(zombie);
+            if(zombie != null)
+                Destroy(zombie);
         }
+        zombies.RemoveRange(0, zombies.Count);
     }
     
     IEnumerator SpawnZombie(int i)
     {
-        Debug.Log("Trynna Spawn");
         float ranDelay = Random.Range(1f, i * 5f);
         yield return new WaitForSecondsRealtime(ranDelay);
         Vector3 spawnPos = RandomPointOnARPlane();
         GameObject newZombie = Instantiate(zombiePrefab, spawnPos, transform.rotation);
         zombies.Add(newZombie);
-        Debug.Log("Shoulda spawned");
     }
 
     public void CalculateNumberZombies()

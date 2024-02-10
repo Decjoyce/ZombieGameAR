@@ -10,6 +10,12 @@ public class Zombie_Health : MonoBehaviour
     public int currentHealth;
     public float DeadSeconds;
 
+    //Hitboxing
+    [SerializeField] Collider tursoCol;
+    [SerializeField] Collider headCol;
+    [SerializeField] Transform tursoPos;
+    [SerializeField] Transform headPos;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,6 +24,12 @@ public class Zombie_Health : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        tursoCol.transform.position = tursoPos.position;
+        headCol.transform.position = headPos.position;
+    }
+
 
     public void TakeDamage(int amount)
     {
@@ -29,6 +41,8 @@ public class Zombie_Health : MonoBehaviour
             zombie.HandleDrops();
             zombie.anim.SetBool("IsDead", true);
             zombie.SwitchState("DEAD");
+            tursoCol.enabled = false;
+            headCol.enabled = false;
             Destroy(gameObject, DeadSeconds);
         }
     }

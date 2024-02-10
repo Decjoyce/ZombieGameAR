@@ -38,20 +38,31 @@ public class PlayerState_Pistol : PlayerState_Base
         {
             if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward, out hit, manager.currentWeapon.range))
             {
-                if (hit.transform.CompareTag("Zombie"))
+                if (hit.transform.CompareTag("Zombie/Turso"))
                 {
-                    Zombie_FPS hitZombie = hit.transform.GetComponent<Zombie_FPS>();
+                    Zombie_FPS hitZombie = hit.transform.parent.GetComponent<Zombie_FPS>();
                     hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage);
 
                     DebugTextDisplayer.instance.ChangeText("Hit Zombie");
                 }
+                if (hit.transform.CompareTag("Zombie/Head"))
+                {
+                    Zombie_FPS hitZombie = hit.transform.parent.GetComponent<Zombie_FPS>();
+                    hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage * 2);
+
+                    DebugTextDisplayer.instance.ChangeText("Hit Zombie");
+                }
+
                 Debug.Log("HIT");
                 manager.SpawnBulletTrail(hit.point);
             }
             else
                 manager.SpawnBulletTrail(manager.cam.transform.position + manager.cam.transform.forward * manager.currentWeapon.range);
-            currentAmmo--;
+
             Handheld.Vibrate();
+
+            currentAmmo--;
+
             if (currentAmmo > 0)
             {
                 canShoot = false;

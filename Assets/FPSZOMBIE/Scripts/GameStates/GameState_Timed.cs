@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameState_Timed : GameState_Base
 {
-    float ogWaveTime = 60;
+    float ogWaveTime = 30;
     float waveTime;
     float waveTimeMultiplier = 1.5f;
+    bool waveOver;
     public override void EnterState(GameManager manager)
     {
         waveTime = ogWaveTime;
@@ -24,11 +25,12 @@ public class GameState_Timed : GameState_Base
 
         manager.timerText.text = waveTime.ToString("0");
 
-        if(waveTime <= 0)
+        if(!waveOver && waveTime <= 0)
         {
             manager.NextWave();
+            waveOver = true;
         }
-        else
+        else if(!waveOver)
             waveTime -= Time.deltaTime;
     }
 
@@ -39,7 +41,9 @@ public class GameState_Timed : GameState_Base
 
     public override void NextWave(GameManager manager)
     {
-        waveTime = ogWaveTime + (manager.wave * waveTimeMultiplier);
+        ogWaveTime *= waveTimeMultiplier;
+        waveTime = ogWaveTime;
+        waveOver = false;
     }
 
 }

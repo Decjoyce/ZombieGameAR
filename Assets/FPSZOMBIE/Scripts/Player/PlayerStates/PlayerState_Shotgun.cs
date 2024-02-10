@@ -28,20 +28,10 @@ public class PlayerState_Shotgun : PlayerState_Base
         if (currentAmmo <= 0 && Time.time >= reloadDelay)
         {
             reserveAmmo--;
-            if (!emptyGun && reserveAmmo == 0)
-            {
-                emptyGun = true;
-                DebugTextDisplayer.instance.ChangeText("Out of Ammo");
-                manager.ReturnToDefaultWeapon();
-            }
-            else
-            {
-                currentAmmo = manager.currentWeapon.magCapacity;
-                DebugTextDisplayer.instance.ChangeText("Reloaded!");
-            }
-
+            currentAmmo = manager.currentWeapon.magCapacity;
+            DebugTextDisplayer.instance.ChangeText("Reloaded!");
         }
-        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
+        manager.text.text = reserveAmmo + "||" + currentAmmo;
     }
 
     public override void TouchInput(Player_FPS manager)
@@ -59,6 +49,11 @@ public class PlayerState_Shotgun : PlayerState_Base
             }
             else
             {
+                if (reserveAmmo == 0)
+                {
+                    DebugTextDisplayer.instance.ChangeText("Out of Ammo");
+                    manager.ReturnToDefaultWeapon();
+                }
                 DebugTextDisplayer.instance.ChangeText("Reloading");
                 reloadDelay = Time.time + 1f / manager.currentWeapon.reloadSpeed;
             }
