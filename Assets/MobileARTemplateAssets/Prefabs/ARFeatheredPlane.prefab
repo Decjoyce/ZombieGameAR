@@ -179,7 +179,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a904885879e06144ca99d275c6a2a0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombie: {fileID: 8783561361847197349, guid: c5622701ce6292a4e90d691a194e0c7e, type: 3}
-  spawnDelay: 10
-  gridRes: 20
-  maxZombies: 3
