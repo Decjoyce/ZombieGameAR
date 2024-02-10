@@ -21,7 +21,6 @@ public class PlayerState_Pistol : PlayerState_Base
         if (!canShoot && Time.time >= attackDelay)
         {
             canShoot = true;
-            DebugTextDisplayer.instance.ChangeText("Can Shoot!");
         }
         if(currentAmmo <= 0 && Time.time >= reloadDelay)
         {
@@ -50,7 +49,7 @@ public class PlayerState_Pistol : PlayerState_Base
                     Zombie_FPS hitZombie = hit.transform.parent.GetComponent<Zombie_FPS>();
                     hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage * 2);
 
-                    DebugTextDisplayer.instance.ChangeText("Hit Zombie");
+                    DebugTextDisplayer.instance.ChangeText("HEADSHOT");
                 }
 
                 Debug.Log("HIT");

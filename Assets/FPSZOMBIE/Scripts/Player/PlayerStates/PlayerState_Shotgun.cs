@@ -23,7 +23,6 @@ public class PlayerState_Shotgun : PlayerState_Base
         if (!canShoot && Time.time >= attackDelay)
         {
             canShoot = true;
-            DebugTextDisplayer.instance.ChangeText("Can Shoot!");
         }
         if (currentAmmo <= 0 && Time.time >= reloadDelay)
         {
@@ -73,7 +72,7 @@ public class PlayerState_Shotgun : PlayerState_Base
 
             if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward + (horiSpread + vertSpread), out hit, manager.currentWeapon.range))
             {
-                if (hit.transform.CompareTag("Zombie"))
+                if (hit.transform.CompareTag("Zombie/TURSO") || hit.transform.CompareTag("Zombie/Head"))
                 {
                     hitZombie = hit.transform.GetComponent<Zombie_FPS>();
                     zombieHits++;
