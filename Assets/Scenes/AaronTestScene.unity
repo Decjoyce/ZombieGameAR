@@ -860,7 +860,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.3490566, g: 0.098821744, b: 0.051041294, a: 0.6156863}
+      maxColor: {r: 0.3490566, g: 0.098821744, b: 0.051041294, a: 0.5254902}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10519,7 +10519,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f79ebd833f0f59c45b6ec62f68b87ff0,
         type: 3}
       propertyPath: m_Name
-      value: LastShotGunOh
+      value: ShotGun
       objectReference: {fileID: 0}
     - target: {fileID: 6745302439343835087, guid: f79ebd833f0f59c45b6ec62f68b87ff0,
         type: 3}
@@ -10935,7 +10935,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a594e07cb5b6dd64497732fe546a4e7a,
         type: 3}
       propertyPath: m_Name
-      value: ANANANOTHERgun
+      value: HandGun
       objectReference: {fileID: 0}
     - target: {fileID: 1618298071203243145, guid: a594e07cb5b6dd64497732fe546a4e7a,
         type: 3}
