@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ZombieManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class ZombieManager : MonoBehaviour
     [SerializeField] GameObject zombiePrefab;
 
 
-    [SerializeField] Transform arPlane;
+    [SerializeField] Transform origin;
     MeshFilter[] arPlanes;
     private List<GameObject> zombies = new();
 
@@ -83,10 +84,12 @@ public class ZombieManager : MonoBehaviour
 
     public Vector3 RandomPointOnARPlane()
     {
-        arPlanes = arPlane.GetChild(1).GetComponentsInChildren<MeshFilter>();
-        Mesh m = arPlanes[Random.Range(0, arPlanes.Length)].mesh;
-        Debug.Log(m.bounds.size.x + " / " + m.bounds.size.z + " / " + m.bounds.size.x * m.bounds.size.z + " / " + m.bounds.size);
-        Vector3 spawnPos = m.vertices[Random.Range(0, m.vertices.Length)];
+        arPlanes = origin.GetChild(1).GetComponentsInChildren<MeshFilter>();
+        MeshFilter arPlane = arPlanes[Random.Range(0, arPlanes.Length)];
+        Mesh m = arPlane.mesh;
+        //Debug.Log(m.bounds.size.x + " / " + m.bounds.size.z + " / " + m.bounds.size.x * m.bounds.size.z + " / " + m.bounds.size);
+        Vector3 vert = m.vertices[Random.Range(0, m.vertices.Length)];
+        Vector3 spawnPos = new Vector3(vert.x, arPlane.transform.position.y, vert.z);
         return spawnPos;
     }
 
