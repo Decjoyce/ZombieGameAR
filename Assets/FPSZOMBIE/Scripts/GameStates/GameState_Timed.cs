@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameState_Timed : GameState_Base
 {
-    float ogWaveTime = 30;
+    float ogWaveTime = 300f;
     float waveTime;
     float waveTimeMultiplier = 1.5f;
     bool waveOver;
@@ -12,7 +12,7 @@ public class GameState_Timed : GameState_Base
     {
         waveTime = ogWaveTime;
         manager.waveManager.StartSpawningZombies();
-        Debug.Log("WTF");
+        manager.CallCoroutine(Delay(manager));
     }
 
     public override void ExitState(GameManager manager)
@@ -23,15 +23,6 @@ public class GameState_Timed : GameState_Base
     public override void FrameUpdate(GameManager manager)
     {
 
-        manager.timerText.text = waveTime.ToString("0");
-
-        if(!waveOver && waveTime <= 0)
-        {
-            manager.NextWave();
-            waveOver = true;
-        }
-        else if(!waveOver)
-            waveTime -= Time.deltaTime;
     }
 
     public override void PhysicsUpdate(GameManager manager)
@@ -44,6 +35,12 @@ public class GameState_Timed : GameState_Base
         ogWaveTime *= waveTimeMultiplier;
         waveTime = ogWaveTime;
         waveOver = false;
+    }
+
+    public IEnumerator Delay(GameManager manager)
+    {
+        yield return new WaitForSeconds(waveTime);
+        manager.NextWave();
     }
 
 }

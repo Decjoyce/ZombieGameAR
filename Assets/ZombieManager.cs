@@ -22,12 +22,14 @@ public class ZombieManager : MonoBehaviour
 
     [SerializeField] Transform arPlane;
     MeshFilter[] arPlanes;
-    private List<GameObject> zombies = new List<GameObject>();
+    private List<GameObject> zombies = new();
 
 
     int numZombies = 6;
     [SerializeField] int ogNumZombies;
     [SerializeField] int zombieIncreaseMultiplier;
+
+    int zombiesKilledInRound;
 
     GameManager gm;
 
@@ -57,11 +59,17 @@ public class ZombieManager : MonoBehaviour
     
     IEnumerator SpawnZombie(int i)
     {
-        float ranDelay = Random.Range(1f, i * 5f);
+        float ranDelay = Random.Range(1f, i * 1f);
         yield return new WaitForSecondsRealtime(ranDelay);
         Vector3 spawnPos = RandomPointOnARPlane();
+        Debug.Log(spawnPos);
         GameObject newZombie = Instantiate(zombiePrefab, spawnPos, transform.rotation);
         zombies.Add(newZombie);
+    }
+
+    public void ZombieDead(GameObject theZombie)
+    {
+        zombies.Remove(theZombie);
     }
 
     public void CalculateNumberZombies()
@@ -73,6 +81,7 @@ public class ZombieManager : MonoBehaviour
     {
         arPlanes = arPlane.GetChild(1).GetComponentsInChildren<MeshFilter>();
         Mesh m = arPlanes[Random.Range(0, arPlanes.Length)].mesh;
+        Debug.Log(m.bounds.size.x + " / " + m.bounds.size.z + " / " + m.bounds.size.x * m.bounds.size.z + " / " + m.bounds.size);
         Vector3 spawnPos = m.vertices[Random.Range(0, m.vertices.Length)];
         return spawnPos;
     }

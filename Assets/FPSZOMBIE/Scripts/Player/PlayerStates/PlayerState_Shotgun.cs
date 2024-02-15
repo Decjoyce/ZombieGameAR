@@ -7,15 +7,16 @@ public class PlayerState_Shotgun : PlayerState_Base
 {
     float attackDelay;
     bool canShoot;
-    float reloadDelay;
+    float reloadSpeed;
     int currentAmmo;
     int reserveAmmo;
-    bool emptyGun;
 
     public override void EnterState(Player_FPS manager)
     {
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo = manager.currentWeapon.reserveAmmo;
+        reloadSpeed = manager.currentWeapon.reloadSpeed;
+        manager.text.text = reserveAmmo + "|" + currentAmmo;
     }
 
     public override void FrameUpdate(Player_FPS manager)
@@ -24,13 +25,6 @@ public class PlayerState_Shotgun : PlayerState_Base
         {
             canShoot = true;
         }
-        if (currentAmmo <= 0 && Time.time >= reloadDelay)
-        {
-            reserveAmmo--;
-            currentAmmo = manager.currentWeapon.magCapacity;
-            DebugTextDisplayer.instance.ChangeText("Reloaded!");
-        }
-        manager.text.text = reserveAmmo + " | " + currentAmmo;
     }
 
     public override void TouchInput(Player_FPS manager)
@@ -40,7 +34,10 @@ public class PlayerState_Shotgun : PlayerState_Base
         if(canShoot && currentAmmo > 0)
         {
             ShootShotGun(manager);
+
             currentAmmo--;
+            manager.text.text = reserveAmmo + "|" + currentAmmo;
+
             if (currentAmmo > 0)
             {
                 canShoot = false;
@@ -53,8 +50,7 @@ public class PlayerState_Shotgun : PlayerState_Base
                     DebugTextDisplayer.instance.ChangeText("Out of Ammo");
                     manager.ReturnToDefaultWeapon();
                 }
-                DebugTextDisplayer.instance.ChangeText("Reloading");
-                reloadDelay = Time.time + 1f / manager.currentWeapon.reloadSpeed;
+                manager.OnReload();
             }
         }
 
@@ -62,6 +58,7 @@ public class PlayerState_Shotgun : PlayerState_Base
 
     void ShootShotGun(Player_FPS manager)
     {
+        //Tracks how many times a zombie is hit and then multiplies that by damage
         int zombieHits = 0;            
         RaycastHit hit;
         Zombie_FPS hitZombie = null;
@@ -89,6 +86,17 @@ public class PlayerState_Shotgun : PlayerState_Base
             hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage * zombieHits);
         }
 
+    }
+
+    public override IEnumerator Reload(Player_FPS manager)
+    {
+        DebugTextDisplayer.instance.ChangeText("Reloading");
+        Handheld.Vibrate();
+        yield return new WaitForSeconds(reloadSpeed);
+        currentAmmo = manager.currentWeapon.magCapacity;
+        reserveAmmo--;
+        DebugTextDisplayer.instance.ChangeText("Reloaded!");
+        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
     }
 
 }

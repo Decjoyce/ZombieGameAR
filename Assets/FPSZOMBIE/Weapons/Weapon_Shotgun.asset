@@ -15,14 +15,14 @@ MonoBehaviour:
   type: SHOTGUN
   damage: 3
   fireRate: 0.5
-  range: 2
-  reloadSpeed: 0.25
+  range: 4
+  reloadSpeed: 2
   magCapacity: 5
   reserveAmmo: 3
   unlimited: 0
   crosshair: {fileID: 0}
   impact: {fileID: 0}
-  trailSize: 0.0025
+  trailSize: 0.004
   trailColor:
     serializedVersion: 2
     key0: {r: 0, g: 0, b: 0, a: 0}

@@ -39,4 +39,9 @@ public abstract class PlayerState_Base
     {
 
     }
+
+    public virtual IEnumerator Reload(Player_FPS manager)
+    {
+        yield return new WaitForSeconds(1);
+    }
 }

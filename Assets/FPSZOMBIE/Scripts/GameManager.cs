@@ -93,4 +93,10 @@ public class GameManager : MonoBehaviour
         waveManager.StartSpawningZombies();
         waveManager.CalculateNumberZombies();
     }
+
+    public void CallCoroutine(IEnumerator routine)
+    {
+        StartCoroutine(routine);
+    }
+
 }

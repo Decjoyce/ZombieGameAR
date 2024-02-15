@@ -95,7 +95,12 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
             currentState.TouchInput(this);
     }
 
-    //Debug
+    public void OnReload()
+    {
+        StartCoroutine(currentState.Reload(this));
+    }
+
+
     public void PickUpWeapon(WeaponType_Base newWeapon)
     {
         currentWeapon = newWeapon;

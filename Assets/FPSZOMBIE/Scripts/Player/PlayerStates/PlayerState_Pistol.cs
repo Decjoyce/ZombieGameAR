@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerState_Pistol : PlayerState_Base
 {
+    // 
+    // This is the default Pistol State
+    // 
+
+
     float attackDelay;
     bool canShoot;
-    float reloadDelay;
+    float reloadSpeed;
     int currentAmmo;
     RaycastHit hit;
 
@@ -14,20 +19,18 @@ public class PlayerState_Pistol : PlayerState_Base
     public override void EnterState(Player_FPS manager)
     {
         currentAmmo = manager.currentWeapon.magCapacity;
+        reloadSpeed = manager.currentWeapon.reloadSpeed;
+        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
     }
 
     public override void FrameUpdate(Player_FPS manager)
     {
+        //This adds delay between shots (done in update because calling coroutines need to be done in a script derriving from Monobehaviour)
         if (!canShoot && Time.time >= attackDelay)
         {
             canShoot = true;
         }
-        if(currentAmmo <= 0 && Time.time >= reloadDelay)
-        {
-            currentAmmo = manager.currentWeapon.magCapacity;
-            DebugTextDisplayer.instance.ChangeText("Reloaded!");
-        }
-        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
+        //Updates the text - this will be changed as it does not need to be called every frame
     }
 
     public override void TouchInput(Player_FPS manager)
@@ -58,10 +61,8 @@ public class PlayerState_Pistol : PlayerState_Base
             else
                 manager.SpawnBulletTrail(manager.cam.transform.position + manager.cam.transform.forward * manager.currentWeapon.range);
 
-            Handheld.Vibrate();
-
             currentAmmo--;
-
+            manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
             if (currentAmmo > 0)
             {
                 canShoot = false;
@@ -69,10 +70,19 @@ public class PlayerState_Pistol : PlayerState_Base
             }
             else
             {
-                DebugTextDisplayer.instance.ChangeText("Reloading");
-                reloadDelay = Time.time + 1f / manager.currentWeapon.reloadSpeed;
+                manager.OnReload();
             }
         }
 
+    }
+
+    public override IEnumerator Reload(Player_FPS manager)
+    {
+        DebugTextDisplayer.instance.ChangeText("Reloading");
+        Handheld.Vibrate();
+        yield return new WaitForSeconds(reloadSpeed);
+        currentAmmo = manager.currentWeapon.magCapacity;
+        DebugTextDisplayer.instance.ChangeText("Reloaded!");
+        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
     }
 }

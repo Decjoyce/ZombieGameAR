@@ -43,6 +43,7 @@ public class Zombie_Health : MonoBehaviour
             zombie.SwitchState("DEAD");
             tursoCol.enabled = false;
             headCol.enabled = false;
+            ZombieManager.instance.ZombieDead(gameObject);
             Destroy(gameObject, DeadSeconds);
         }
     }

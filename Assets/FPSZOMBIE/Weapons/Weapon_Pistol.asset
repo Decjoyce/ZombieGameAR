@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 1
   fireRate: 2
   range: 20
-  reloadSpeed: 0.25
+  reloadSpeed: 1
   magCapacity: 7
   reserveAmmo: 0
   unlimited: 1
