@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameState_Timed : GameState_Base
 {
-    float ogWaveTime = 300f;
+    float ogWaveTime = 120f;
     float waveTime;
     float waveTimeMultiplier = 1.5f;
     bool waveOver;
@@ -40,6 +40,7 @@ public class GameState_Timed : GameState_Base
     public IEnumerator Delay(GameManager manager)
     {
         yield return new WaitForSeconds(waveTime);
+        DebugTextDisplayer.instance.ChangeText("INTERMISSION");
         manager.NextWave();
     }
 

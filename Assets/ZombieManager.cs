@@ -29,6 +29,8 @@ public class ZombieManager : MonoBehaviour
     [SerializeField] int ogNumZombies;
     [SerializeField] int zombieIncreaseMultiplier;
 
+    public bool isTimed;
+
     int zombiesKilledInRound;
 
     GameManager gm;
@@ -42,7 +44,8 @@ public class ZombieManager : MonoBehaviour
     {
         for (int i = 0; i < numZombies; i++)
         {
-            StartCoroutine(SpawnZombie(i));
+            float ranDelay = Random.Range(1f, i * 1f);
+            StartCoroutine(SpawnZombie(ranDelay));
         }
     }
 
@@ -57,10 +60,9 @@ public class ZombieManager : MonoBehaviour
         zombies.RemoveRange(0, zombies.Count);
     }
     
-    IEnumerator SpawnZombie(int i)
+    IEnumerator SpawnZombie(float delay)
     {
-        float ranDelay = Random.Range(1f, i * 1f);
-        yield return new WaitForSecondsRealtime(ranDelay);
+        yield return new WaitForSecondsRealtime(delay);
         Vector3 spawnPos = RandomPointOnARPlane();
         Debug.Log(spawnPos);
         GameObject newZombie = Instantiate(zombiePrefab, spawnPos, transform.rotation);
@@ -70,6 +72,8 @@ public class ZombieManager : MonoBehaviour
     public void ZombieDead(GameObject theZombie)
     {
         zombies.Remove(theZombie);
+        float ranDelay = Random.Range(1f, 2f);
+        SpawnZombie(ranDelay);
     }
 
     public void CalculateNumberZombies()
