@@ -74,7 +74,7 @@ public class ZombieManager : MonoBehaviour
     {
         zombies.Remove(theZombie);
         float ranDelay = Random.Range(1f, 2f);
-        SpawnZombie(ranDelay);
+        StartCoroutine(SpawnZombie(ranDelay));
     }
 
     public void CalculateNumberZombies()
