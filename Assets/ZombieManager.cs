@@ -73,7 +73,7 @@ public class ZombieManager : MonoBehaviour
     public void ZombieDead(GameObject theZombie)
     {
         zombies.Remove(theZombie);
-        float ranDelay = Random.Range(1f, 2f);
+        float ranDelay = Random.Range(2f, 5f);
         StartCoroutine(SpawnZombie(ranDelay));
     }
 

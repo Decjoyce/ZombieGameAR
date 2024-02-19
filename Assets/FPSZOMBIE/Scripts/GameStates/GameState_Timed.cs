@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameState_Timed : GameState_Base
 {
-    float ogWaveTime = 120f;
+    float ogWaveTime = 30f;
     float waveTime;
     float waveTimeMultiplier = 1.5f;
     bool waveOver;
