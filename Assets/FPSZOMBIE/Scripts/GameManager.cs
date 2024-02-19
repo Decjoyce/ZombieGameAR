@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +20,8 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public UnityEvent OnGameStart, OnRoundStart, OnRoundEnd, OnGameOver;
+
     //Game States (essentially gamemodes)
     GameState_Base currentState;
     public GameState_Start state_Start = new GameState_Start();
@@ -25,7 +30,12 @@ public class GameManager : MonoBehaviour
     //References
     public ZombieManager waveManager;
 
+    /// UI
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI waveText;
+
+    public ARPlaneManager arPlaneManager;
+    public XROrigin xrOrigin;
 
     //Variables
     public int wave = 1;
@@ -37,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         currentState = state_Start;
         currentState.EnterState(this);
+        waveText.text = "Wave " + wave;
     }
 
     private void Update()
@@ -87,8 +98,10 @@ public class GameManager : MonoBehaviour
     IEnumerator RoundDelay()
     {
         waveManager.StopSpawningZombies();
+        OnRoundEnd.Invoke();
         yield return new WaitForSecondsRealtime(roundDelay);
         wave++;
+        waveText.text = "Wave " + wave;
         currentState.NextWave(this);
         waveManager.StartSpawningZombies();
         waveManager.CalculateNumberZombies();
@@ -98,5 +111,5 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(routine);
     }
-
+    
 }

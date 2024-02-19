@@ -38,7 +38,6 @@ public class Zombie_Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            zombie.HandleDrops();
             zombie.anim.SetBool("IsDead", true);
             zombie.SwitchState("DEAD");
             tursoCol.enabled = false;

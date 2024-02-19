@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class ZombieManager : MonoBehaviour
 {
@@ -20,7 +23,7 @@ public class ZombieManager : MonoBehaviour
 
     [SerializeField] GameObject zombiePrefab;
 
-
+    public ARAnchorManager arAnchorManager;
     [SerializeField] Transform origin;
     MeshFilter[] arPlanes;
     private List<GameObject> zombies = new();
@@ -43,9 +46,9 @@ public class ZombieManager : MonoBehaviour
 
     public void StartSpawningZombies()
     {
-        for (int i = 0; i < numZombies; i++)
+        for (int i = 0; i < ogNumZombies; i++)
         {
-            float ranDelay = Random.Range(1f, i * 1f);
+            float ranDelay = Random.Range(1f, i * 3f);
             StartCoroutine(SpawnZombie(ranDelay));
         }
     }
@@ -65,7 +68,7 @@ public class ZombieManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(delay);
         Vector3 spawnPos = RandomPointOnARPlane();
-        Debug.Log(spawnPos);
+        //Debug.Log(spawnPos);
         GameObject newZombie = Instantiate(zombiePrefab, spawnPos, transform.rotation);
         zombies.Add(newZombie);
     }
@@ -79,7 +82,7 @@ public class ZombieManager : MonoBehaviour
 
     public void CalculateNumberZombies()
     {
-        numZombies = ogNumZombies + gm.wave * zombieIncreaseMultiplier;
+        numZombies = ogNumZombies + (gm.wave * zombieIncreaseMultiplier);
     }
 
     public Vector3 RandomPointOnARPlane()
@@ -89,7 +92,8 @@ public class ZombieManager : MonoBehaviour
         Mesh m = arPlane.mesh;
         //Debug.Log(m.bounds.size.x + " / " + m.bounds.size.z + " / " + m.bounds.size.x * m.bounds.size.z + " / " + m.bounds.size);
         Vector3 vert = m.vertices[Random.Range(0, m.vertices.Length)];
-        Vector3 spawnPos = new Vector3(vert.x, arPlane.transform.position.y, vert.z);
+        Vector3 spawnPos = new Vector3(arPlane.transform.position.x/2 + vert.x, arPlane.transform.position.y, arPlane.transform.position.z/2 + vert.z);
+        Debug.Log(spawnPos + " | " + vert);
         return spawnPos;
     }
 

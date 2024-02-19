@@ -82,10 +82,4 @@ public class Zombie_FPS : MonoBehaviour
         }
         currentState.EnterState(this);
     }
-
-    public void HandleDrops()
-    {
-        if(Random.value <= dropChance)
-            Instantiate(availableDrops[Random.Range(0, availableDrops.Length)], transform.position, transform.rotation);
-    }
 }

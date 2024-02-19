@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 {
@@ -23,6 +24,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     //Weapons
     public WeaponType_Base currentWeapon;
     public WeaponType_Base defaultWeapon;
+    public Image crosshairs;
     public TextMeshProUGUI text;
 
     float attackDelay;
@@ -104,6 +106,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public void PickUpWeapon(WeaponType_Base newWeapon)
     {
         currentWeapon = newWeapon;
+        crosshairs.sprite = currentWeapon.crosshair;
         SwitchState(currentWeapon.type);
     }
 
