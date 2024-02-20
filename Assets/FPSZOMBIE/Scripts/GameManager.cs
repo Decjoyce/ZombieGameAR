@@ -98,13 +98,14 @@ public class GameManager : MonoBehaviour
     IEnumerator RoundDelay()
     {
         waveManager.StopSpawningZombies();
-        OnRoundEnd.Invoke();
+        OnRoundStart.Invoke();
         yield return new WaitForSecondsRealtime(roundDelay);
         wave++;
         waveText.text = "Wave " + wave;
         currentState.NextWave(this);
         waveManager.StartSpawningZombies();
         waveManager.CalculateNumberZombies();
+        OnRoundEnd.Invoke();
     }
 
     public void CallCoroutine(IEnumerator routine)
