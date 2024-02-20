@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Spitting : MonoBehaviour
@@ -9,7 +10,12 @@ public class Spitting : MonoBehaviour
     public Transform ThrowRotation;
     public Transform attackPoint;
     public GameObject objectToThrow;
+    public Transform PlayerTransform;
+    private Transform SpitterZombie;
+    [SerializeField] float EffectRadius;
+    private Rigidbody rb;
 
+    
     [Header("Settings")]
     public int totalThrows;
     public float throwCooldown;
@@ -25,13 +31,28 @@ public class Spitting : MonoBehaviour
 
     private void Awake()
     {
-        readyToThrow = true;   
+        readyToThrow = true;
+        SpitterZombie = gameObject.transform;
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotationX;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(readyToThrow);
+        transform.LookAt(PlayerTransform.position);
+        var difference = SpitterZombie.position - PlayerTransform.position;
+        if(difference.magnitude < EffectRadius && readyToThrow == true)
+        {
+            Throw();
+            readyToThrow = false;
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+        }
+
+        else
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
     }
 
     public void Throw()
@@ -62,24 +83,7 @@ public class Spitting : MonoBehaviour
     private void ResetThrow()
     {
         readyToThrow = true;
-        Destroy(gameObject, DestroyCooldown);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(readyToThrow == true && other.CompareTag("Player"))
-        {
-            Throw();
-            readyToThrow = false;
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.CompareTag("Player") && readyToThrow == false)
-        {
-            readyToThrow = true;
-        }
-        
-    }
 }

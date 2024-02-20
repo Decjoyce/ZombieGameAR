@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 public class Zombie_FPS : MonoBehaviour
@@ -15,6 +16,7 @@ public class Zombie_FPS : MonoBehaviour
     public ZombieState_Attack state_attack = new ZombieState_Attack();
     public ZombieState_Stagger state_stagger = new ZombieState_Stagger();
     public ZombieState_Dead state_dead = new ZombieState_Dead();
+    private Spitting spit;
 
     public GameObject[] availableDrops;
     [SerializeField] float dropChance;
@@ -29,6 +31,7 @@ public class Zombie_FPS : MonoBehaviour
     {
         player = PlayerManagement.instance.player;
         playerHealth = PlayerManagement.instance.playerHealth;
+        spit = GetComponent<Spitting>();
 
         currentState = state_follow;
         currentState.EnterState(this);
