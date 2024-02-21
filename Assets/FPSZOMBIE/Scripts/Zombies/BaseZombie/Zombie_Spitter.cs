@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
 
-public class Zombie_FPS : MonoBehaviour
+public class Zombie_Spitter : MonoBehaviour
 {
     public GameObject player;
     public PlayerHealth playerHealth;
@@ -11,11 +11,11 @@ public class Zombie_FPS : MonoBehaviour
 
     public Zombie_Health zombieHealth;
 
-    ZombieState_Base currentState;
-    public ZombieState_Follow state_follow = new ZombieState_Follow();
-    public ZombieState_Attack state_attack = new ZombieState_Attack();
-    public ZombieState_Stagger state_stagger = new ZombieState_Stagger();
-    public ZombieState_Dead state_dead = new ZombieState_Dead();
+    SpitterState_Base currentState;
+    public SpitterState_Follow state_follow = new SpitterState_Follow();
+    public SpitterState_Attack state_attack = new SpitterState_Attack();
+    public SpitterState_Stagger state_stagger = new SpitterState_Stagger();
+    public SpitterState_Dead state_dead = new SpitterState_Dead();
 
     public GameObject[] availableDrops;
     [SerializeField] float dropChance;
@@ -24,6 +24,12 @@ public class Zombie_FPS : MonoBehaviour
     public float speed_attack;
     public float damage;
     public float staggerTime;
+    public float throwForce;
+    public float throwUpwardForce;
+    public int totalThrows;
+    public Transform ThrowRotation;
+    public Transform attackPoint;
+    public GameObject objectToThrow;
 
     // Start is called before the first frame update
     void Start()
@@ -63,16 +69,12 @@ public class Zombie_FPS : MonoBehaviour
         {
             case "FOLLOW":
                 currentState = state_follow;
-                anim.SetBool("IsAttacking", false);
-                anim.SetBool("IsHit", false);
                 break;
             case "ATTACK":
                 currentState = state_attack;
-                anim.SetBool("IsAttacking", true);
                 break;
             case "STAGGER":
                 currentState = state_stagger;
-                anim.SetBool("IsHit", true);
                 break;
             case "DEAD":
                 currentState = state_dead;
@@ -82,5 +84,10 @@ public class Zombie_FPS : MonoBehaviour
                 break;
         }
         currentState.EnterState(this);
+    }
+
+    public GameObject HelpInstantiate(GameObject newObj, Vector3 pos, Quaternion rot)
+    {
+        return Instantiate(newObj, pos, rot);
     }
 }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Spitting : MonoBehaviour
@@ -11,7 +10,6 @@ public class Spitting : MonoBehaviour
     public Transform attackPoint;
     public GameObject objectToThrow;
     public Transform PlayerTransform;
-    private Transform SpitterZombie;
     [SerializeField] float EffectRadius;
     private Rigidbody rb;
 
@@ -32,16 +30,17 @@ public class Spitting : MonoBehaviour
     private void Awake()
     {
         readyToThrow = true;
-        SpitterZombie = gameObject.transform;
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        PlayerTransform = PlayerManagement.instance.player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(PlayerTransform.position);
-        var difference = SpitterZombie.position - PlayerTransform.position;
+        Vector3 newRot = Quaternion.LookRotation(transform.position - PlayerTransform.transform.position, Vector3.up).eulerAngles;
+        transform.eulerAngles = new Vector3(0, newRot.y, 0);
+        var difference = transform.position - PlayerTransform.position;
         if(difference.magnitude < EffectRadius && readyToThrow == true)
         {
             Throw();

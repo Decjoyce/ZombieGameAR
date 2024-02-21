@@ -10,7 +10,7 @@ public class WeaponPickup : MonoBehaviour
 
     public void Update()
     {
-        if (scoreManager.currentScore > 14)
+        if (ScoreManager.instance.currentScore > 14)
         {
             canBuyShotgun =  true;
         }
@@ -22,7 +22,8 @@ public class WeaponPickup : MonoBehaviour
     }
     public void PickedUpWeapon()
     {
+        ScoreManager.instance.ShotgunBought();
         Destroy(gameObject);
-        scoreManager.ShotgunBought();
+        
     }
 }
