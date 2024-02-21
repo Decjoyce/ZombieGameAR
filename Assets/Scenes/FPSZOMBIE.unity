@@ -6560,8 +6560,8 @@ MonoBehaviour:
   speed_attack: 1.13
   damage: 1.29
   staggerTime: 0.9
-  throwForce: 1.75
-  throwUpwardForce: 1.39
+  throwForce: 10
+  throwUpwardForce: 3
   totalThrows: 3
   ThrowRotation: {fileID: 0}
   attackPoint: {fileID: 659756853}
