@@ -40,6 +40,7 @@ public class Zombie_Health : MonoBehaviour
         {
             zombie.anim.SetBool("IsDead", true);
             zombie.SwitchState("DEAD");
+            ScoreManager.instance.IncreaseScore(3);
             tursoCol.enabled = false;
             headCol.enabled = false;
             ZombieManager.instance.ZombieDead(gameObject);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerState_Hand : PlayerState_Base
 {
@@ -25,8 +26,15 @@ public class PlayerState_Hand : PlayerState_Base
             if (hit.transform.CompareTag("WeaponDrop"))
             {
                 WeaponPickup weap = hit.transform.GetComponent<WeaponPickup>();
-                manager.currentWeapon = weap.weapon;
-                weap.PickedUpWeapon();
+                // manager.currentWeapon = weap.weapon;
+                // weap.PriceCheck();
+
+                if (weap.canBuyShotgun == true)
+                {
+                    manager.currentWeapon = weap.weapon;
+                    weap.PickedUpWeapon();
+                }
+                else return;
             }
             Debug.Log(hit.transform.name);
         }

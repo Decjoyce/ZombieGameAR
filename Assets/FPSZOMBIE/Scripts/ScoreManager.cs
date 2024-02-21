@@ -8,18 +8,25 @@ public class ScoreManager : MonoBehaviour
     public int currentCombo;
     [SerializeField] float multiplier;
 
+    public static ScoreManager instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one instance of ScoreManager Found");
+            return;
+        }
+        instance = this;
+    }
+
     public void IncreaseScore(float amount)
     {
-        currentScore += amount * ComboMultiplier();
+        currentScore += amount;
     }
 
-    float ComboMultiplier()
+    public void ShotgunBought()
     {
-        return currentCombo * multiplier; 
-    }
-
-    public void IncreaseCombo()
-    {
-        currentCombo++;
+        currentScore -= 15;
     }
 }
