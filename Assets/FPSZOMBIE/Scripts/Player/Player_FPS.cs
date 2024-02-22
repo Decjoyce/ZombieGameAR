@@ -110,7 +110,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public void PickUpWeapon(WeaponType_Base newWeapon)
     {
         currentWeapon = newWeapon;
-        crosshairs.sprite = currentWeapon.crosshair;
+        crosshairs.sprite = newWeapon.crosshair;
         SwitchState(currentWeapon.type);
     }
 

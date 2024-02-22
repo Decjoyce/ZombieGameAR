@@ -31,7 +31,7 @@ public class PlayerState_Hand : PlayerState_Base
 
                 if (weap.CheckPrice())
                 {
-                    manager.currentWeapon = weap.weapon;
+                    manager.PickUpWeapon(weap.weapon);
                     weap.PickedUpWeapon();
                 }
                 else return;
