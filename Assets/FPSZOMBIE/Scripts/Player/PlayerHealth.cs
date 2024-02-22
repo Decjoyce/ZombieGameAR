@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    Player_FPS dad;
     [SerializeField] float maxHealth;
     [SerializeField] float regenDelay;
+    [SerializeField] float regenRate;
     public float currentHealth;
     bool isRegen;
 
     [SerializeField] Image blood;
+
+    private void Awake()
+    {
+        dad = GetComponent<Player_FPS>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +29,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isRegen)
         {
-            currentHealth += Time.deltaTime;
+            currentHealth += regenRate * Time.deltaTime;
         }
 
         if(currentHealth >= maxHealth && isRegen == true)
@@ -43,9 +50,11 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(RegenDelay());
         if (currentHealth <= 0)
         {
-            Debug.Log("UGHHHH (Death Sound");
+            GameManager.instance.ChangeState("END");
+            dad.SwitchState("DEAD");
         }
     }
+
 
     IEnumerator RegenDelay()
     {

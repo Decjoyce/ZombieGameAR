@@ -39,7 +39,7 @@ public class ZombieState_Attack : ZombieState_Base
 
     public override void PhysicsUpdate(Zombie_FPS manager)
     {
-        Vector3 newRot = Quaternion.LookRotation(manager.transform.position - manager.player.transform.position, Vector3.up).eulerAngles;
+        Vector3 newRot = Quaternion.LookRotation(manager.player.transform.position - manager.transform.position, Vector3.up).eulerAngles;
         manager.transform.eulerAngles = new Vector3(0, newRot.y, 0);
     }
 

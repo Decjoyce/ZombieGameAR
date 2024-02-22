@@ -93,7 +93,6 @@ public class ZombieManager : MonoBehaviour
         //Debug.Log(m.bounds.size.x + " / " + m.bounds.size.z + " / " + m.bounds.size.x * m.bounds.size.z + " / " + m.bounds.size);
         Vector3 vert = m.vertices[Random.Range(0, m.vertices.Length)];
         Vector3 spawnPos = new Vector3(arPlane.transform.position.x/2 + vert.x, arPlane.transform.position.y, arPlane.transform.position.z/2 + vert.z);
-        Debug.Log(spawnPos + " | " + vert);
         return spawnPos;
     }
 

@@ -17,6 +17,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     //States
     PlayerState_Base currentState;
+    public PlayerState_Dead state_Dead = new PlayerState_Dead();
     public PlayerState_Hand state_Hand = new PlayerState_Hand();
     public PlayerState_Pistol state_Pistol = new PlayerState_Pistol();
     public PlayerState_Shotgun state_Shotgun = new PlayerState_Shotgun();
@@ -76,6 +77,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
         currentState.ExitState(this);
         switch (newState)
         {
+            case "DEAD":
+                currentState = state_Dead;
+                break;
             case "HAND":
                 currentState = state_Hand;
                 break;

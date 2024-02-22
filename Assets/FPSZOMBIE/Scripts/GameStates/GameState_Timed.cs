@@ -16,7 +16,7 @@ public class GameState_Timed : GameState_Base
 
     public override void ExitState(GameManager manager)
     {
-
+        
     }
 
     public override void FrameUpdate(GameManager manager)

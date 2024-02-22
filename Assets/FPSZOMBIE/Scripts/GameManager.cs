@@ -5,6 +5,7 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     GameState_Base currentState;
     public GameState_Start state_Start = new GameState_Start();
     public GameState_Timed state_Timed = new GameState_Timed();
+    public GameState_End state_End = new GameState_End();
 
     //References
     public ZombieManager waveManager;
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
     public int wave = 1;
     public float score;
     public float roundDelay = 15f;
+
+    Coroutine currentCoroutine;
 
     #region States
     private void Start()
@@ -71,6 +75,9 @@ public class GameManager : MonoBehaviour
             case "TIMED":
                 currentState = state_Timed;
                 break;
+            case "END":
+                currentState = state_End;
+                break;
             default:
                 Debug.LogError("INVALID STATE: " + newState);
                 break;
@@ -83,6 +90,11 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
 
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void IncreaseScore(float amount)
@@ -110,7 +122,11 @@ public class GameManager : MonoBehaviour
 
     public void CallCoroutine(IEnumerator routine)
     {
-        StartCoroutine(routine);
+        currentCoroutine = StartCoroutine(routine);
     }
-    
+    public void StopCurrentCoroutine()
+    {
+        StopCoroutine(currentCoroutine);
+    }
+
 }
