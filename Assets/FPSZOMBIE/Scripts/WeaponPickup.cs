@@ -6,24 +6,16 @@ public class WeaponPickup : MonoBehaviour
 {
     public WeaponType_Base weapon;
     public ScoreManager scoreManager;
-    public bool canBuyShotgun;
+    public int cost;
 
-    public void Update()
+    public bool CheckPrice()
     {
-        if (ScoreManager.instance.currentScore > 14)
-        {
-            canBuyShotgun =  true;
-        }
-
-        else
-        {
-            canBuyShotgun = false;
-        }
+        return ScoreManager.instance.currentScore >= cost;
     }
+
     public void PickedUpWeapon()
     {
-        ScoreManager.instance.ShotgunBought();
-        Destroy(gameObject);
-        
+            ScoreManager.instance.DecreaseScore(cost);
+            Destroy(gameObject);
     }
 }

@@ -20,6 +20,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public PlayerState_Hand state_Hand = new PlayerState_Hand();
     public PlayerState_Pistol state_Pistol = new PlayerState_Pistol();
     public PlayerState_Shotgun state_Shotgun = new PlayerState_Shotgun();
+    public PlayerState_Bazooka state_Bazooka = new PlayerState_Bazooka();
 
     //Weapons
     public WeaponType_Base currentWeapon;
@@ -84,6 +85,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
             case "SHOTGUN":
                 currentState = state_Shotgun;
                 break;
+            case "BAZOOKA":
+                currentState = state_Bazooka;
+                break;
             default:
                 Debug.LogError("INVALID STATE: " + newState);
                 break;
@@ -119,6 +123,11 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     {
         currentWeapon = defaultWeapon;
         SwitchState(currentWeapon.type);
+    }
+
+    public void HelpInstantiate(GameObject obj, Vector3 pos, Quaternion rot)
+    {
+        Instantiate(obj, pos, rot);
     }
 
     public void SpawnBulletTrail(Vector3 endPos)

@@ -29,7 +29,7 @@ public class PlayerState_Hand : PlayerState_Base
                 // manager.currentWeapon = weap.weapon;
                 // weap.PriceCheck();
 
-                if (weap.canBuyShotgun == true)
+                if (weap.CheckPrice())
                 {
                     manager.currentWeapon = weap.weapon;
                     weap.PickedUpWeapon();

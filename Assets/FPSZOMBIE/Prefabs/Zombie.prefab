@@ -2100,14 +2100,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5906676428012525988}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.146}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6159734798770937979}
   m_Father: {fileID: 7464045495830452131}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6236048076294518728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,7 +2925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7464045495830452131}
   - component: {fileID: 6680938032531673659}
-  - component: {fileID: -1467335725275212507}
+  - component: {fileID: 1510878844196324796}
   - component: {fileID: 168201111367734089}
   - component: {fileID: 2627744768480705421}
   m_Layer: 0
@@ -2968,7 +2968,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerHealth: {fileID: 0}
   anim: {fileID: 5339499996241193407}
-  zombieHealth: {fileID: -1467335725275212507}
+  zombieHealth: {fileID: 0}
   availableDrops:
   - {fileID: 7241435368002955591, guid: 2918212d75c83c84ebaf3e4be71c1a42, type: 3}
   dropChance: 0.25
@@ -2976,7 +2976,7 @@ MonoBehaviour:
   speed_attack: 0.25
   damage: 5
   staggerTime: 0.5
---- !u!114 &-1467335725275212507
+--- !u!114 &1510878844196324796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2985,16 +2985,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8783561361847197349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89ea9bd25167f634c9552fafa9926a64, type: 3}
+  m_Script: {fileID: 11500000, guid: 3148a606bea48e14a8202a785b26579b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  currentHealth: 3
-  DeadSeconds: 4
+  currentHealth: 0
+  DeadSeconds: 3
+  scoreAmount: 3
   tursoCol: {fileID: 4178636507014669033}
   headCol: {fileID: 8112358562746200520}
   tursoPos: {fileID: 7548656694212032548}
-  headPos: {fileID: 6604450074375327453}
+  headPos: {fileID: 8286332491341138483}
+  zombie: {fileID: 6680938032531673659}
 --- !u!54 &168201111367734089
 Rigidbody:
   m_ObjectHideFlags: 0

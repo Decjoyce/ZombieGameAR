@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public float currentScore;
-    public int currentCombo;
-    [SerializeField] float multiplier;
+    public int currentScore;
 
     public static ScoreManager instance;
 
@@ -20,13 +18,13 @@ public class ScoreManager : MonoBehaviour
         instance = this;
     }
 
-    public void IncreaseScore(float amount)
+    public void IncreaseScore(int amount)
     {
         currentScore += amount;
     }
 
-    public void ShotgunBought()
+    public void DecreaseScore(int amount)
     {
-        currentScore -= 15;
+        currentScore -= amount;
     }
 }

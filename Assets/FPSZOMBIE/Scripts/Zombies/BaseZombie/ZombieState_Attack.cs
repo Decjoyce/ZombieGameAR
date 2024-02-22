@@ -5,7 +5,6 @@ using UnityEngine;
 public class ZombieState_Attack : ZombieState_Base
 {
     float attackDelay;
-    bool canAttack = true;
     public override void EnterState(Zombie_FPS manager)
     { 
 

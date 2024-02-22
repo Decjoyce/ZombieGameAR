@@ -7,7 +7,6 @@ public class GameState_Timed : GameState_Base
     float ogWaveTime = 30f;
     float waveTime;
     float waveTimeMultiplier = 1.5f;
-    bool waveOver;
     public override void EnterState(GameManager manager)
     {
         waveTime = ogWaveTime;
@@ -34,7 +33,6 @@ public class GameState_Timed : GameState_Base
     {
         ogWaveTime *= waveTimeMultiplier;
         waveTime = ogWaveTime;
-        waveOver = false;
     }
 
     public IEnumerator Delay(GameManager manager)

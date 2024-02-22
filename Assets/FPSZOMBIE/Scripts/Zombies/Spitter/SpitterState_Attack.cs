@@ -6,7 +6,6 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class SpitterState_Attack : SpitterState_Base
 {
     float attackDelay;
-    bool canAttack = true;
     public override void EnterState(Zombie_Spitter manager)
     { 
 
