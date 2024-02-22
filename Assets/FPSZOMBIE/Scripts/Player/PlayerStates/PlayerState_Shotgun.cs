@@ -96,7 +96,7 @@ public class PlayerState_Shotgun : PlayerState_Base
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo--;
         DebugTextDisplayer.instance.ChangeText("Reloaded!");
-        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
+        manager.text.text = reserveAmmo + "|" + currentAmmo;
     }
 
 }

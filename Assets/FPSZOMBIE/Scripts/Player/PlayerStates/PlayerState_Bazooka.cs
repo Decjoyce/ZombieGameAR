@@ -77,7 +77,7 @@ public class PlayerState_Bazooka : PlayerState_Base
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo--;
         DebugTextDisplayer.instance.ChangeText("Reloaded!");
-        manager.text.text = currentAmmo + "/" + manager.currentWeapon.magCapacity;
+        manager.text.text = reserveAmmo + "|" + currentAmmo;
     }
 
 }
