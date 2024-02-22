@@ -42,15 +42,15 @@ public class PlayerState_Pistol : PlayerState_Base
             {
                 if (hit.transform.CompareTag("Zombie/Turso"))
                 {
-                    Zombie_FPS hitZombie = hit.transform.parent.GetComponent<Zombie_FPS>();
-                    hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage);
+                    Zombie_Health zombieHealth = hit.transform.parent.GetComponent<Zombie_Health>();
+                    zombieHealth.TakeDamage(manager.currentWeapon.damage);
 
                     DebugTextDisplayer.instance.ChangeText("Hit Zombie");
                 }
                 if (hit.transform.CompareTag("Zombie/Head"))
                 {
-                    Zombie_FPS hitZombie = hit.transform.parent.GetComponent<Zombie_FPS>();
-                    hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage * 2);
+                    Zombie_Health zombieHealth = hit.transform.parent.GetComponent<Zombie_Health>();
+                    zombieHealth.TakeDamage(manager.currentWeapon.damage * 2);
 
                     DebugTextDisplayer.instance.ChangeText("HEADSHOT");
                 }

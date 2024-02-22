@@ -41,7 +41,7 @@ public class SpitterState_Attack : SpitterState_Base
 
     public override void PhysicsUpdate(Zombie_Spitter manager)
     {
-        Vector3 newRot = Quaternion.LookRotation(manager.transform.position - manager.player.transform.position, Vector3.up).eulerAngles;
+        Vector3 newRot = Quaternion.LookRotation(manager.player.transform.position - manager.transform.position, Vector3.up).eulerAngles;
         manager.transform.eulerAngles = new Vector3(0, newRot.y, 0);
     }
 
@@ -57,16 +57,7 @@ public class SpitterState_Attack : SpitterState_Base
         
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
-        Vector3 ForceDir = manager.transform.forward;
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(manager.transform.position, manager.transform.forward, out hit, 500f))
-        {
-            ForceDir = (hit.point - manager.attackPoint.position).normalized;
-        }
-
-        Vector3 forceToAdd = ForceDir * manager.throwForce + manager.transform.up * manager.throwUpwardForce;
+        Vector3 forceToAdd = manager.transform.forward * manager.throwForce + manager.transform.up * manager.throwUpwardForce;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);
 

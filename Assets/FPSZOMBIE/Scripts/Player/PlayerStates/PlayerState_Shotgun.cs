@@ -61,7 +61,7 @@ public class PlayerState_Shotgun : PlayerState_Base
         //Tracks how many times a zombie is hit and then multiplies that by damage
         int zombieHits = 0;            
         RaycastHit hit;
-        Zombie_FPS hitZombie = null;
+        Zombie_Health zombieHealth = null;
         for (int i = 0; i < 7; i++)
         {
             Vector3 horiSpread = Vector3.right * Random.Range(-0.7f, 0.7f);
@@ -71,7 +71,7 @@ public class PlayerState_Shotgun : PlayerState_Base
             {
                 if (hit.transform.CompareTag("Zombie/Turso") || hit.transform.CompareTag("Zombie/Head"))
                 {
-                    hitZombie = hit.transform.GetComponentInParent<Zombie_FPS>();
+                    zombieHealth = hit.transform.GetComponentInParent<Zombie_Health>();
                     zombieHits++;
                     Debug.Log("Hit " + hit.transform.name);
                 }
@@ -83,7 +83,7 @@ public class PlayerState_Shotgun : PlayerState_Base
         }
         if(zombieHits > 0)
         {
-            hitZombie.zombieHealth.TakeDamage(manager.currentWeapon.damage * zombieHits);
+            zombieHealth.TakeDamage(manager.currentWeapon.damage * zombieHits);
         }
 
     }

@@ -31,6 +31,7 @@ public class Zombie_Spitter : MonoBehaviour
     public Transform attackPoint;
     public GameObject objectToThrow;
 
+
     // Start is called before the first frame update
     void Start()
     {
