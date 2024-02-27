@@ -117,7 +117,6 @@ public class NewZombieManager : MonoBehaviour
                     generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
                     waveValue -= randEnemyCost;
                 }
-
             }
             else if (waveValue <= 0)
                 break;
