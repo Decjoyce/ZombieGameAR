@@ -6,13 +6,12 @@ public class ZombieSpawner : MonoBehaviour
 {
     [SerializeField] GameObject zombie;
     [SerializeField] float spawnDelay;
-
+    bool canSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(zombie, transform.position, transform.rotation);
-        StartCoroutine(SpawnZombie());
+
     }
 
     IEnumerator SpawnZombie()
@@ -21,5 +20,7 @@ public class ZombieSpawner : MonoBehaviour
         Instantiate(zombie, transform.position, transform.rotation);
         StartCoroutine(SpawnZombie());
     }
+
+
 
 }

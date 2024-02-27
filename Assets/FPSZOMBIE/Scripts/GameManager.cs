@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public GameState_End state_End = new GameState_End();
 
     //References
-    public ZombieManager waveManager;
+    public NewZombieManager zombieManager;
 
     /// UI
     public TextMeshProUGUI timerText;
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     //Variables
     public int wave = 1;
+    public float waveTime = 30f;
     public float score;
     public float roundDelay = 15f;
 
@@ -109,15 +110,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator RoundDelay()
     {
-        waveManager.StopSpawningZombies();
-        OnRoundStart.Invoke();
+        zombieManager.StopSpawningZombies(true);
+        OnRoundEnd.Invoke();
         yield return new WaitForSecondsRealtime(roundDelay);
         wave++;
         waveText.text = "Wave " + wave;
         currentState.NextWave(this);
-        waveManager.StartSpawningZombies();
-        waveManager.CalculateNumberZombies();
-        OnRoundEnd.Invoke();
+        zombieManager.StartSpawningZombies();
+        OnRoundStart.Invoke();
     }
 
     public void CallCoroutine(IEnumerator routine)

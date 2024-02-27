@@ -17,39 +17,40 @@ public class ZombieManager : MonoBehaviour
             return;
         }
         instance = this;
-
-        gm = GetComponent<GameManager>();
     }
 
     [SerializeField] GameObject zombiePrefab;
 
-    public ARAnchorManager arAnchorManager;
     [SerializeField] Transform origin;
     MeshFilter[] arPlanes;
+    private Vector3[] zombieSpawners;
     private List<GameObject> zombies = new();
 
 
-    int numZombies = 6;
-    [SerializeField] int ogNumZombies;
-    [SerializeField] int zombieIncreaseMultiplier;
+    [SerializeField] int numZombieSpawners = 6;
+    [SerializeField] int maxZombiesPerRound = 2;
+    [SerializeField] int maxZombiesAllowedAtOnce = 12;
+    [SerializeField] float spawnFrequency;
+
+
+    int totalZombiesSpawned;
 
     public bool isTimed;
 
     int zombiesKilledInRound;
-
-    GameManager gm;
+    int zombiesSpawnedThisRound;
 
     private void Start()
     {
-        numZombies = ogNumZombies;
+        zombieSpawners = new Vector3[numZombieSpawners];
     }
 
     public void StartSpawningZombies()
     {
-        for (int i = 0; i < ogNumZombies; i++)
+        for(int i = 0; i < numZombieSpawners; i++)
         {
-            float ranDelay = Random.Range(1f, i * 3f);
-            StartCoroutine(SpawnZombie(ranDelay));
+            zombieSpawners[i] = RandomPointOnARPlane();
+            StartCoroutine(SpawnZombie(i * 4f, i));
         }
     }
 
@@ -62,27 +63,27 @@ public class ZombieManager : MonoBehaviour
                 Destroy(zombie);
         }
         zombies.RemoveRange(0, zombies.Count);
+        Debug.Log(totalZombiesSpawned);
     }
     
-    IEnumerator SpawnZombie(float delay)
+    IEnumerator SpawnZombie(float delay, int spawner)
     {
         yield return new WaitForSecondsRealtime(delay);
-        Vector3 spawnPos = RandomPointOnARPlane();
-        //Debug.Log(spawnPos);
-        GameObject newZombie = Instantiate(zombiePrefab, spawnPos, transform.rotation);
-        zombies.Add(newZombie);
+            GameObject zombie = Instantiate(zombiePrefab, zombieSpawners[spawner], Quaternion.identity);
+            zombies.Add(zombie);
+            zombiesSpawnedThisRound++;
+            totalZombiesSpawned++;
     }
 
     public void ZombieDead(GameObject theZombie)
     {
         zombies.Remove(theZombie);
-        float ranDelay = Random.Range(2f, 5f);
-        StartCoroutine(SpawnZombie(ranDelay));
-    }
-
-    public void CalculateNumberZombies()
-    {
-        numZombies = ogNumZombies + (gm.wave * zombieIncreaseMultiplier);
+        if (zombiesSpawnedThisRound + 1 < maxZombiesPerRound)
+        {
+            float ranDelay = Random.Range(2f, 5f);
+            int ranSpawner = Random.Range(0, zombieSpawners.Length);
+            StartCoroutine(SpawnZombie(ranDelay, ranSpawner));
+        }
     }
 
     public Vector3 RandomPointOnARPlane()
@@ -90,10 +91,26 @@ public class ZombieManager : MonoBehaviour
         arPlanes = origin.GetChild(1).GetComponentsInChildren<MeshFilter>();
         MeshFilter arPlane = arPlanes[Random.Range(0, arPlanes.Length)];
         Mesh m = arPlane.mesh;
-        //Debug.Log(m.bounds.size.x + " / " + m.bounds.size.z + " / " + m.bounds.size.x * m.bounds.size.z + " / " + m.bounds.size);
-        Vector3 vert = m.vertices[Random.Range(0, m.vertices.Length)];
-        Vector3 spawnPos = new Vector3(arPlane.transform.position.x/2 + vert.x, arPlane.transform.position.y, arPlane.transform.position.z/2 + vert.z);
+        float xPos = Random.Range(-m.bounds.size.x, m.bounds.extents.x);
+        float zPos = Random.Range(-m.bounds.size.z, m.bounds.extents.z);
+        Vector3 spawnPos = m.bounds.ClosestPoint(new Vector3(arPlane.transform.position.x + xPos, arPlane.transform.position.y, arPlane.transform.position.z + zPos));
         return spawnPos;
+    }
+
+    public void CalculateNumberZombies(int currentWave)
+    {
+        switch (currentWave)
+        {
+            case 1:
+                
+                break;
+            case 3:
+                //12
+                break;
+            case 10:
+                //18
+                break;
+        }
     }
 
 }

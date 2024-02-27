@@ -11,12 +11,26 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float regenRate;
     public float currentHealth;
     bool isRegen;
+    [SerializeField] bool immortal;
 
     [SerializeField] Image blood;
+
+    GameManager gm;
 
     private void Awake()
     {
         dad = GetComponent<Player_FPS>();
+        gm = GameManager.instance;
+    }
+
+    private void OnEnable()
+    {
+        gm.OnRoundEnd.AddListener(RestoreHealth);
+    }
+
+    private void OnDisable()
+    {
+        gm.OnRoundEnd.AddListener(RestoreHealth);
     }
 
     // Start is called before the first frame update
@@ -42,6 +56,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (immortal)
+            return;
+
         currentHealth -= amount;
         float bloodStrength = blood.color.a + amount / 100;
         blood.color = new Color(255, 0, 0, bloodStrength);
@@ -60,5 +77,12 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(regenDelay);
         isRegen = true;
+    }
+
+    public void RestoreHealth()
+    {
+        currentHealth = maxHealth;
+        isRegen = false;
+        blood.color = new Color(255, 0, 0, 0);
     }
 }

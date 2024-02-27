@@ -23,7 +23,7 @@ public abstract class Zombie_Health : MonoBehaviour
     public virtual void Die()
     {
         ScoreManager.instance.IncreaseScore(scoreAmount);
-        ZombieManager.instance.ZombieDead(gameObject);
+        NewZombieManager.instance.ZombieDead(gameObject);
         Destroy(gameObject, DeadSeconds);
     }
 
