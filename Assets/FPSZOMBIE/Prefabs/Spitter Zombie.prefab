@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6099744606282483883}
   - component: {fileID: 8302069488586873368}
   - component: {fileID: 5074476377351571993}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Zombie/Turso
   m_Icon: {fileID: 0}
@@ -248,8 +248,8 @@ MonoBehaviour:
   zombieHealth: {fileID: 0}
   availableDrops: []
   dropChance: 0
-  speed_movement: 1.23
-  speed_attack: 1.13
+  speed_movement: 0.3
+  speed_attack: 3
   damage: 1.29
   staggerTime: 0.9
   throwForce: 10
@@ -295,5 +295,5 @@ MonoBehaviour:
   health: 2
   currentHealth: 0
   DeadSeconds: 3
-  scoreAmount: 3
+  scoreAmount: 10
   zombie: {fileID: 2422371084381888764}

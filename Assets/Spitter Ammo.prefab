@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5443458483210637807}
   - component: {fileID: 8787705256472693955}
   - component: {fileID: 1914025014430553469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spitter Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,4 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46bf6bab33fcd8c44bdaf8174490eddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 10

@@ -80,18 +80,20 @@ public class NewZombieManager : MonoBehaviour
         if(enemiesAlive.Count > 0)
         {
             for(int i = 0; i < enemiesAlive.Count; i++)
-            {            
-                enemiesAlive[0].GetComponent<Zombie_Health>().TakeDamage(100000);
-                enemiesAlive.RemoveAt(0);
+            {
+                if(enemiesAlive[i] != null)
+                    enemiesAlive[i].GetComponent<Zombie_Health>().TakeDamage(100000, false);
+                
             }
+            enemiesAlive.Clear();
         }
 
     }
 
     public void ZombieDead(GameObject theZombie)
     {
-        if (enemiesAlive.Contains(theZombie))
-            enemiesAlive.Remove(theZombie);
+        //if (enemiesAlive.Contains(theZombie))
+            //enemiesAlive.Remove(theZombie);
     }
 
     public void CalculateWave()

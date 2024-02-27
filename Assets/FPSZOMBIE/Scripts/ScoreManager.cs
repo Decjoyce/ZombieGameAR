@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class ScoreManager : MonoBehaviour
     public int currentScore;
 
     public static ScoreManager instance;
+
+    [SerializeField] TextMeshProUGUI scoreTextInterRound, scoreTextGameplay;
 
     private void Awake()
     {
@@ -21,10 +24,14 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseScore(int amount)
     {
         currentScore += amount;
+        scoreTextGameplay.text = "$" + currentScore;
+        scoreTextInterRound.text = "$" + currentScore;
     }
 
     public void DecreaseScore(int amount)
     {
         currentScore -= amount;
+        scoreTextGameplay.text = "$" + currentScore;
+        scoreTextInterRound.text = "$" + currentScore;
     }
 }

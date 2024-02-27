@@ -27,7 +27,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public WeaponType_Base currentWeapon;
     public WeaponType_Base defaultWeapon;
     public Image crosshairs;
+    public Sprite handCrosshair;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI costText;
 
     float attackDelay;
     bool canShoot;
@@ -82,6 +84,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
                 break;
             case "HAND":
                 currentState = state_Hand;
+                crosshairs.sprite = handCrosshair;
                 break;
             case "PISTOL":
                 currentState = state_Pistol;
@@ -114,12 +117,13 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public void PickUpWeapon(WeaponType_Base newWeapon)
     {
         currentWeapon = newWeapon;
-        crosshairs.sprite = newWeapon.crosshair;
-        SwitchState(currentWeapon.type);
+        //crosshairs.sprite = newWeapon.crosshair;
+        //SwitchState(currentWeapon.type);
     }
 
     public void ReturnToCurrentWeaponState()
     {
+        crosshairs.sprite = currentWeapon.crosshair;
         SwitchState(currentWeapon.type);
     }
 

@@ -31,13 +31,17 @@ public class GameManager : MonoBehaviour
 
     //References
     public NewZombieManager zombieManager;
+    public Player_FPS player;
 
     /// UI
+    public GameObject startButton;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI waveText;
 
     public ARPlaneManager arPlaneManager;
     public XROrigin xrOrigin;
+
+    public GameObject shopPrefab;
 
     //Variables
     public int wave = 1;
@@ -88,6 +92,12 @@ public class GameManager : MonoBehaviour
 
     #endregion states
 
+    public void StartGame()
+    {
+        if(xrOrigin.transform.GetChild(1).childCount > 0)
+            ChangeState("TIMED");
+    }
+
     public void PauseGame()
     {
 
@@ -112,7 +122,11 @@ public class GameManager : MonoBehaviour
     {
         zombieManager.StopSpawningZombies(true);
         OnRoundEnd.Invoke();
+        player.SwitchState("HAND");
+        GameObject siopa = Instantiate(shopPrefab, xrOrigin.transform.GetChild(0).position, Quaternion.identity);
         yield return new WaitForSecondsRealtime(roundDelay);
+        Destroy(siopa);
+        player.ReturnToCurrentWeaponState();
         wave++;
         waveText.text = "Wave " + wave;
         currentState.NextWave(this);

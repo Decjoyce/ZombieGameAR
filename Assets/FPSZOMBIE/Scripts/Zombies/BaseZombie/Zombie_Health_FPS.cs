@@ -25,13 +25,13 @@ public class Zombie_Health_FPS : Zombie_Health
         headCol.transform.position = headPos.position;
     }
 
-    public override void TakeDamage(int amount)
+    public override void TakeDamage(int amount, bool addScore = true)
     {
         zombie.SwitchState("STAGGER");
         base.TakeDamage(amount);
     }
 
-    public override void Die()
+    public override void Die(bool addScore = true)
     {
         zombie.anim.SetBool("IsDead", true);
         zombie.SwitchState("DEAD");

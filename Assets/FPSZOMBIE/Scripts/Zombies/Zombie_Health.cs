@@ -10,19 +10,20 @@ public abstract class Zombie_Health : MonoBehaviour
     public float DeadSeconds;
     public int scoreAmount;
 
-    public virtual void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount, bool addScore = true)
     {
         currentHealth -= amount;
 
         if (currentHealth <= 0)
         {
-            Die();
+            Die(addScore);
         }
     }
 
-    public virtual void Die()
+    public virtual void Die(bool addScore = true)
     {
-        ScoreManager.instance.IncreaseScore(scoreAmount);
+        if(addScore)
+            ScoreManager.instance.IncreaseScore(scoreAmount);
         NewZombieManager.instance.ZombieDead(gameObject);
         Destroy(gameObject, DeadSeconds);
     }

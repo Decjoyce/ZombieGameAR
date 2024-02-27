@@ -11,12 +11,12 @@ public class SpittyBall : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
-        Destroy(gameObject);
+        Debug.Log(other.name);
     }
 }
