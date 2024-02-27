@@ -18,7 +18,7 @@ public class NewZombieManager : MonoBehaviour
     public float spawnInterval;
 
     [SerializeField] Transform origin;
-    MeshFilter[] arPlanes;
+    Transform[] arPlanes;
 
     public static NewZombieManager instance;
     private void Awake()
@@ -129,12 +129,13 @@ public class NewZombieManager : MonoBehaviour
 
     public Vector3 RandomPointOnARPlane()
     {
-        arPlanes = origin.GetChild(1).GetComponentsInChildren<MeshFilter>();
-        MeshFilter arPlane = arPlanes[Random.Range(0, arPlanes.Length)];
-        Mesh m = arPlane.mesh;
+        Transform arPlane = origin.GetChild(1).GetChild(Random.Range(0, origin.transform.childCount));
+        ARPlane plane = arPlane.GetComponent<ARPlane>();
+        Mesh m = arPlane.GetComponent<MeshFilter>().mesh;
         float xPos = Random.Range(-m.bounds.size.x, m.bounds.extents.x);
         float zPos = Random.Range(-m.bounds.size.z, m.bounds.extents.z);
-        Vector3 spawnPos = m.bounds.ClosestPoint(new Vector3(arPlane.transform.position.x + xPos, arPlane.transform.position.y, arPlane.transform.position.z + zPos));
+        Debug.Log(plane.center + " ??d " + arPlane.position);
+        Vector3 spawnPos = m.bounds.ClosestPoint(new Vector3(plane.center.x + xPos, plane.center.y, plane.center.z + zPos));
         return spawnPos;
     }
 }

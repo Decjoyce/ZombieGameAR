@@ -70,12 +70,16 @@ public class Zombie_Spitter : MonoBehaviour
         {
             case "FOLLOW":
                 currentState = state_follow;
+                anim.SetBool("IsAttacking", false);
+                anim.SetBool("IsHit", false);
                 break;
             case "ATTACK":
                 currentState = state_attack;
+                anim.SetBool("IsAttacking", true);
                 break;
             case "STAGGER":
                 currentState = state_stagger;
+                anim.SetBool("IsHit", true);
                 break;
             case "DEAD":
                 currentState = state_dead;

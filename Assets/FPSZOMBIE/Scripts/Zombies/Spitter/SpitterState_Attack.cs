@@ -31,11 +31,13 @@ public class SpitterState_Attack : SpitterState_Base
 
     public override void FrameUpdate(Zombie_Spitter manager)
     {
-        if(Time.time >= attackDelay)
+        if (attackDelay <= 0)
         {
-            attackDelay = Time.time + 1f / manager.speed_attack;
+            attackDelay = manager.speed_attack;
             Throw(manager);
         }
+        else
+            attackDelay -= Time.deltaTime;
     }
 
     public override void PhysicsUpdate(Zombie_Spitter manager)

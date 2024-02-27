@@ -33,7 +33,7 @@ public class Zombie_Health_Spitter : Zombie_Health
 
     public override void Die(bool addScore = true)
     {
-        //zombie.anim.SetBool("IsDead", true);
+        zombie.anim.SetBool("IsDead", true);
         zombie.SwitchState("DEAD");
         //tursoCol.enabled = false;
         //headCol.enabled = false;

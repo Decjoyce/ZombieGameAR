@@ -105,7 +105,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        SceneManager.LoadScene(0);
+        StartCoroutine(QuitGame());
+    }
+
+    IEnumerator QuitGame()
+    {
+        yield return new WaitForSecondsRealtime(10f);
+        Application.Quit();
     }
 
     public void IncreaseScore(float amount)

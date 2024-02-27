@@ -7,7 +7,7 @@ public class GameState_End : GameState_Base
     public override void EnterState(GameManager manager)
     {
         manager.OnGameOver.Invoke();
-        manager.zombieManager.StopSpawningZombies();
+        manager.zombieManager.StopSpawningZombies(true);
         manager.StopCurrentCoroutine();
     }
 
