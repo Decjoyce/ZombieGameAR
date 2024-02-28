@@ -812,10 +812,10 @@ MonoBehaviour:
   zombieHealth: {fileID: 8694651908471854751}
   availableDrops: []
   dropChance: 0
-  speed_movement: 5
-  speed_attack: 3
-  damage: 1
-  staggerTime: 1
+  speed_movement: 0.3
+  speed_attack: 0.5
+  damage: 3
+  staggerTime: 0.5
 --- !u!114 &8694651908471854751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +831,7 @@ MonoBehaviour:
   health: 2
   currentHealth: 0
   DeadSeconds: 3
-  scoreAmount: 4
+  scoreAmount: 6
   zombie: {fileID: 1171419762204219712}
   tursoCol: {fileID: 1318146616927192217}
   headCol: {fileID: 1118297743069313950}

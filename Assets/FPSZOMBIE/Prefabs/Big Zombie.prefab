@@ -1096,8 +1096,8 @@ MonoBehaviour:
   dropChance: 0
   speed_movement: 0.2
   speed_attack: 4.33
-  damage: 3
-  staggerTime: 3
+  damage: 8
+  staggerTime: 2
 --- !u!114 &3765189990385173062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,10 +1110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3148a606bea48e14a8202a785b26579b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 12
   currentHealth: 0
   DeadSeconds: 3
-  scoreAmount: 0
+  scoreAmount: 20
   zombie: {fileID: 6523532988195437113}
   tursoCol: {fileID: 2523499701042965243}
   headCol: {fileID: 435998137905575350}

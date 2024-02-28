@@ -1517,9 +1517,9 @@ MonoBehaviour:
   zombieHealth: {fileID: 6421971084939109575}
   availableDrops: []
   dropChance: 0
-  speed_movement: 0.5
+  speed_movement: 1
   speed_attack: 1
-  damage: 1
+  damage: 10
   staggerTime: 0.1
 --- !u!114 &6421971084939109575
 MonoBehaviour:
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   health: 1
   currentHealth: 0
   DeadSeconds: 1
-  scoreAmount: 0
+  scoreAmount: 5
   zombie: {fileID: 425595336044063237}
   tursoCol: {fileID: 2547704157603314126}
   headCol: {fileID: 3546706895035141433}

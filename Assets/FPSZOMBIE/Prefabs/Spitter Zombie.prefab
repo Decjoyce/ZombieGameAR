@@ -950,7 +950,7 @@ MonoBehaviour:
   zombieHealth: {fileID: 0}
   availableDrops: []
   dropChance: 0
-  speed_movement: 0.3
+  speed_movement: 0.4
   speed_attack: 1.2
   damage: 1.29
   staggerTime: 0.9
