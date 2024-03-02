@@ -7,6 +7,7 @@ public class SoundDisplayer : MonoBehaviour
     public static SoundDisplayer instance;
     [SerializeField] Transform daParent, cam;
     [SerializeField] GameObject indicator;
+    [SerializeField] float maxAudibleRange, indicatorDelay;
 
     private void Awake()
     {
@@ -20,17 +21,29 @@ public class SoundDisplayer : MonoBehaviour
 
     public void TranslateSound(Vector3 pos)
     {
-        GameObject newIndicator = Instantiate(indicator, daParent);
+        float dis = Vector3.Distance(transform.position, pos);
 
-        Vector3 dir = transform.position - pos;
+        if (dis <= maxAudibleRange)
+        {
+            GameObject newIndicator = Instantiate(indicator, daParent);
 
-        Quaternion newRot = Quaternion.LookRotation(dir);
-        newRot.z = -newRot.y;
-        newRot.x = 0;
-        newRot.y = 0;
+            //Rotation
+            Vector3 dir = transform.position - pos;
 
-        Vector3 north = new Vector3(0, 0, cam.transform.eulerAngles.y);
-        newIndicator.transform.localRotation = newRot * Quaternion.Euler(north);
-        Destroy(newIndicator, 2f);
+            Quaternion newRot = Quaternion.LookRotation(dir);
+            newRot.z = -newRot.y;
+            newRot.x = 0;
+            newRot.y = 0;
+
+            Vector3 north = new Vector3(0, 0, cam.transform.eulerAngles.y);
+            newIndicator.transform.localRotation = newRot * Quaternion.Euler(north);
+
+            //Size
+            float ySize = ExtensionMethods.Map(dis, maxAudibleRange, 0, 0, 1);
+
+            newIndicator.transform.GetChild(0).localScale = new(1, ySize, 1);
+
+            Destroy(newIndicator, indicatorDelay);
+        }
     }
 }
