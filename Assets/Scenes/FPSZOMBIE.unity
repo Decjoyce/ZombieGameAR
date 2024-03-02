@@ -11107,6 +11107,8 @@ MonoBehaviour:
   cam: {fileID: 2512387469332387801}
   indicator: {fileID: 511813843755904912, guid: 45af00c09085e274ea90f974bf3972a4,
     type: 3}
+  maxAudibleRange: 5
+  indicatorDelay: 2
 --- !u!1 &1880233119
 GameObject:
   m_ObjectHideFlags: 0
