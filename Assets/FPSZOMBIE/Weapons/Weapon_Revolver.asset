@@ -10,40 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd1c6ebaa4582ec4788352f62ccc5f22, type: 3}
-  m_Name: Weapon_Shotgun
+  m_Name: Weapon_Revolver
   m_EditorClassIdentifier: 
-  type: SHOTGUN
-  damage: 3
-  fireRate: 0.5
-  range: 4
-  reloadSpeed: 2
-  magCapacity: 5
-  reserveAmmo: 3
+  type: 
+  damage: 5
+  fireRate: 1
+  range: 25
+  reloadSpeed: 1.6
+  magCapacity: 6
+  reserveAmmo: 12
   unlimited: 0
-  crosshair: {fileID: -1720050605, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
+  crosshair: {fileID: 1068637084, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
   impact: {fileID: 0}
-  trailSize: 0.004
+  trailSize: 0.007
   trailColor:
     serializedVersion: 2
-    key0: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 0}
-    key1: {r: 1, g: 0.55372715, b: 0, a: 0.6269299}
-    key2: {r: 0, g: 0, b: 0, a: 1}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.4641509, g: 0.4641509, b: 0.4641509, a: 1}
+    key1: {r: 0.8774389, g: 0.8774389, b: 0.8774389, a: 1}
+    key2: {r: 0.3056603, g: 0.3056603, b: 0.3056603, a: 0}
+    key3: {r: 0.30588236, g: 0.30588236, b: 0.30588236, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
+    ctime1: 33847
+    ctime2: 57594
+    ctime3: 65535
     ctime4: 0
     ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 30647
-    atime2: 65535
+    atime1: 65535
+    atime2: 0
     atime3: 0
     atime4: 0
     atime5: 0
@@ -51,5 +51,5 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 3
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
