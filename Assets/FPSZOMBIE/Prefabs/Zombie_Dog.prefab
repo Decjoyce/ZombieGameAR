@@ -342,8 +342,8 @@ Transform:
   m_GameObject: {fileID: 1954429062644698968}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.1000013, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6306222023077867515}
@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 7255239935382464113}
   m_Layer: 0
   m_Name: Torso
-  m_TagString: Untagged
+  m_TagString: Zombie/Turso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -647,10 +647,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 12.6
-  m_Height: 60.755898
+  m_Radius: 0.5
+  m_Height: 2
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -4.398191}
+  m_Center: {x: 0, y: 0, z: -0.3}
 --- !u!54 &7255239935382464113
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 398178407080389696}
   m_Layer: 0
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Zombie/Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1151,7 +1151,7 @@ Transform:
   m_GameObject: {fileID: 6641904407847539333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.9, z: 34.1}
+  m_LocalPosition: {x: 0, y: 0.12699997, z: 0.9700012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1176,7 +1176,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 9.06
+  m_Radius: 0.29
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &398178407080389696
 Rigidbody:
@@ -1474,7 +1474,8 @@ GameObject:
   - component: {fileID: 425595336044063237}
   - component: {fileID: 6421971084939109575}
   - component: {fileID: 9126626709775843185}
-  m_Layer: 0
+  - component: {fileID: 386002544298892062}
+  m_Layer: 2
   m_Name: Zombie_Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1491,8 +1492,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.54829, y: 0.873, z: -63.47}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2153482158706588711}
   - {fileID: 5412987361827499178}
@@ -1569,6 +1570,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!136 &386002544298892062
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356895879033955745}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.33
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 1.71}
 --- !u!1 &8774865127519206208
 GameObject:
   m_ObjectHideFlags: 0

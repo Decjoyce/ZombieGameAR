@@ -7,10 +7,8 @@ public class Zombie_Health_Spitter : Zombie_Health
     public Zombie_Spitter zombie;
 
     //Hitboxing
-/*    [SerializeField] Collider tursoCol;
-    [SerializeField] Collider headCol;
+    [SerializeField] Collider tursoCol;
     [SerializeField] Transform tursoPos;
-    [SerializeField] Transform headPos;*/
 
     // Start is called before the first frame update
     void Awake()
@@ -21,17 +19,17 @@ public class Zombie_Health_Spitter : Zombie_Health
     // Update is called once per frame
     private void Update()
     {
-        //tursoCol.transform.position = tursoPos.position;
+        tursoCol.transform.position = tursoPos.position;
         //headCol.transform.position = headPos.position;
     }
 
-    public override void TakeDamage(int amount, bool addScore = true)
+    public override void TakeDamage(int amount, bool addScore = true, bool headShot = false)
     {
         zombie.SwitchState("STAGGER");
         base.TakeDamage(amount);
     }
 
-    public override void Die(bool addScore = true)
+    public override void Die(bool addScore = true, bool headShot = false)
     {
         zombie.anim.SetBool("IsDead", true);
         zombie.SwitchState("DEAD");

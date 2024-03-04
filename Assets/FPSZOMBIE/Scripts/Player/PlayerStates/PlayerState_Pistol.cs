@@ -50,7 +50,7 @@ public class PlayerState_Pistol : PlayerState_Base
                 if (hit.transform.CompareTag("Zombie/Head"))
                 {
                     Zombie_Health zombieHealth = hit.transform.parent.GetComponent<Zombie_Health>();
-                    zombieHealth.TakeDamage(manager.currentWeapon.damage * 2);
+                    zombieHealth.TakeDamage(manager.currentWeapon.damage * 2, headShot: true);
 
                     DebugTextDisplayer.instance.ChangeText("HEADSHOT");
                 }

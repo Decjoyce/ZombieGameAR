@@ -124,9 +124,9 @@ Transform:
   m_GameObject: {fileID: 765950195417865580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5600984546808686402}
   - {fileID: 8190749594367784667}
@@ -412,7 +412,7 @@ GameObject:
   m_Layer: 0
   m_Name: AttackPos
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -425,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 3197861754118837858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0.77}
+  m_LocalPosition: {x: 0, y: 0.59, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -778,7 +778,7 @@ Transform:
   m_GameObject: {fileID: 7117000031975816144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -902,7 +902,6 @@ Transform:
   - {fileID: 1693880428957142303}
   - {fileID: 6099744606282483883}
   - {fileID: 138172368986408918}
-  - {fileID: 304578979759932403}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8511183421650940401
@@ -951,10 +950,10 @@ MonoBehaviour:
   availableDrops: []
   dropChance: 0
   speed_movement: 0.4
-  speed_attack: 1.2
+  speed_attack: 0.8
   damage: 1.29
   staggerTime: 0.9
-  throwForce: 10
+  throwForce: 12
   throwUpwardForce: 3
   totalThrows: 3
   ThrowRotation: {fileID: 0}
@@ -978,6 +977,8 @@ MonoBehaviour:
   DeadSeconds: 3
   scoreAmount: 10
   zombie: {fileID: 2422371084381888764}
+  tursoCol: {fileID: 8302069488586873368}
+  tursoPos: {fileID: 8190749594367784667}
 --- !u!136 &1701699915795676304
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1000,7 +1001,7 @@ CapsuleCollider:
   m_Radius: 0.17
   m_Height: 5.23
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 2.46}
+  m_Center: {x: 0, y: 0.69, z: 2.46}
 --- !u!1 &7581222518883585310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,37 +1063,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6912118658811941011}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8339156761571662666
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 304578979759932403}
-  m_Layer: 2
-  m_Name: Stuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &304578979759932403
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8339156761571662666}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8707203650795610186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8354848210594883758
 GameObject:

@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 6366485711748133739}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Zombie/Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,8 +301,7 @@ Transform:
   m_LocalPosition: {x: 0.0018134117, y: 0.6037945, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6439271692890153175}
+  m_Children: []
   m_Father: {fileID: 6843037567202716890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &665395517654789573
@@ -1024,7 +1023,7 @@ GameObject:
   - component: {fileID: 6523532988195437113}
   - component: {fileID: 3765189990385173062}
   - component: {fileID: 7756640361964933039}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Big Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1117,8 +1116,8 @@ MonoBehaviour:
   zombie: {fileID: 6523532988195437113}
   tursoCol: {fileID: 2523499701042965243}
   headCol: {fileID: 435998137905575350}
-  tursoPos: {fileID: 0}
-  headPos: {fileID: 0}
+  tursoPos: {fileID: 6174661271774806737}
+  headPos: {fileID: 7727529414024982913}
 --- !u!136 &7756640361964933039
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1142,100 +1141,6 @@ CapsuleCollider:
   m_Height: 3.761927
   m_Direction: 2
   m_Center: {x: 0, y: 2.3159962, z: 1.765633}
---- !u!1 &8064060314810581336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6439271692890153175}
-  - component: {fileID: 5719556050393677726}
-  m_Layer: 0
-  m_Name: trouserss
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6439271692890153175
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8064060314810581336}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7806269855979494737}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &5719556050393677726
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8064060314810581336}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 5464300504948114753, guid: 4f09516eb9ca31e4aa48084b5e1df2cc, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 3733314745001652868, guid: 4f09516eb9ca31e4aa48084b5e1df2cc, type: 3}
-  m_Bones:
-  - {fileID: 5368921038152351947}
-  - {fileID: 6174661271774806737}
-  - {fileID: 1405908584626514819}
-  - {fileID: 4863393485053647898}
-  - {fileID: 6928387862554568351}
-  - {fileID: 7421194758917870172}
-  - {fileID: 61241199746502329}
-  - {fileID: 665836244754556561}
-  - {fileID: 6610811863916979034}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 6174661271774806737}
-  m_AABB:
-    m_Center: {x: -0.46427575, y: -0.9417691, z: 0.23761606}
-    m_Extent: {x: 0.76552784, y: 1.2730865, z: 0.84997845}
-  m_DirtyAABB: 0
 --- !u!1 &8106641961512484094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,7 +1216,7 @@ GameObject:
   - component: {fileID: 7768758590276027270}
   m_Layer: 0
   m_Name: Torso
-  m_TagString: Untagged
+  m_TagString: Zombie/Turso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

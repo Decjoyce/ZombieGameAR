@@ -20,7 +20,7 @@ public class NewZombieManager : MonoBehaviour
     [SerializeField] Transform origin;
     Transform[] arPlanes;
 
-
+    int[] numOfEnemy = new int[5];
 
     public static NewZombieManager instance;
     private void Awake()
@@ -100,7 +100,11 @@ public class NewZombieManager : MonoBehaviour
 
     public void CalculateWave()
     {
-        waveValue = gm.wave * waveValueMultiplier;
+        numOfEnemy = new int[5];
+        if (gm.wave > 1)
+            waveValue = gm.wave * waveValueMultiplier;
+        else
+            waveValue = 10;
         GenerateZombies();
         spawnInterval = gm.waveTime / enemiesToSpawn.Count;
         spawnTimer = spawnInterval;
@@ -118,8 +122,12 @@ public class NewZombieManager : MonoBehaviour
             {
                 if (gm.wave >= enemies[randEnemyId].requiredWaveToSpawn)
                 {
+                    if(enemies[randEnemyId].maxCount == 0 || numOfEnemy[randEnemyId] < enemies[randEnemyId].maxCount * (gm.wave - enemies[randEnemyId].requiredWaveToSpawn))
+                    {
                     generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
                     waveValue -= randEnemyCost;
+                    numOfEnemy[randEnemyId]++;
+                    }
                 }
             }
             else if (waveValue <= 0)

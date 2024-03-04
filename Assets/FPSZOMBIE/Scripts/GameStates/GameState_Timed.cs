@@ -30,7 +30,12 @@ public class GameState_Timed : GameState_Base
 
     public override void NextWave(GameManager manager)
     {
-        ogWaveTime *= waveTimeMultiplier;
+        if (manager.wave % 2 != 0)
+        {
+            Debug.Log(manager.wave % 3);
+                ogWaveTime += 15;
+        }
+
         manager.waveTime = ogWaveTime;
         manager.CallCoroutine(Delay(manager));
     }
