@@ -129,7 +129,12 @@ public class GameManager : MonoBehaviour
         zombieManager.StopSpawningZombies(true);
         OnRoundEnd.Invoke();
         player.SwitchState("HAND");
-        GameObject siopa = Instantiate(shopPrefab, xrOrigin.transform.GetChild(0).position, Quaternion.identity);
+
+        Vector3 chestPos = xrOrigin.transform.GetChild(1).transform.GetChild(0).position;
+        Vector3 newRot = Quaternion.LookRotation(player.transform.position - chestPos, Vector3.up).eulerAngles;
+        Quaternion newNewRot = Quaternion.Euler(0, newRot.y, 0);
+        GameObject siopa = Instantiate(shopPrefab, chestPos, newNewRot);
+
         yield return new WaitForSecondsRealtime(roundDelay);
         Destroy(siopa);
         player.ReturnToCurrentWeaponState();

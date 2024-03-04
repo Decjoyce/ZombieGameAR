@@ -132,10 +132,11 @@ public class NewZombieManager : MonoBehaviour
         Transform arPlane = origin.GetChild(1).GetChild(Random.Range(0, origin.transform.childCount));
         ARPlane plane = arPlane.GetComponent<ARPlane>();
         Mesh m = arPlane.GetComponent<MeshFilter>().mesh;
-        float xPos = Random.Range(-m.bounds.size.x, m.bounds.extents.x);
-        float zPos = Random.Range(-m.bounds.size.z, m.bounds.extents.z);
+        float xPos = Random.Range(-m.bounds.extents.x, m.bounds.extents.x);
+        float zPos = Random.Range(-m.bounds.extents.z, m.bounds.extents.z);
         Debug.Log(plane.center + " ??d " + arPlane.position);
-        Vector3 spawnPos = m.bounds.ClosestPoint(new Vector3(plane.center.x + xPos, plane.center.y, plane.center.z + zPos));
+        Vector3 spawnPos = new Vector3(arPlane.position.x + xPos, arPlane.position.y, arPlane.position.z + zPos);
+        Debug.Log(spawnPos);
         return spawnPos;
     }
 }

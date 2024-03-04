@@ -52,10 +52,8 @@ public class PlayerState_Hand : PlayerState_Base
                     manager.PickUpWeapon(weap.weapon);
                     weap.PickedUpWeapon();
                 }
-                else return;
             }
         }
-        Debug.Log(hit.transform.name);
 
     }
 }
