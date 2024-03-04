@@ -9,6 +9,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 {
     Shoot shoot;
     PlayerControls playerControls;
+    PlayerHealth health;
 
     public Transform cam;
     [SerializeField] Transform firePoint;
@@ -43,6 +44,8 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
         playerControls = new PlayerControls();
 
         playerControls.BaseControls.SetCallbacks(this);
+
+        health = GetComponent<PlayerHealth>();
 
         shoot = GetComponent<Shoot>();
     }
@@ -152,5 +155,16 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public void DebugShoot()
     {
         currentState.TouchInput(this);
+    }
+
+    public void ResetStuff()
+    {
+        state_Dead = new PlayerState_Dead();
+        state_Hand = new PlayerState_Hand();
+        state_Pistol = new PlayerState_Pistol();
+        state_Shotgun = new PlayerState_Shotgun();
+        state_Bazooka = new PlayerState_Bazooka();
+        ReturnToDefaultWeapon();
+        health.RestoreHealth();
     }
 }

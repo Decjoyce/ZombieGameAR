@@ -9,6 +9,7 @@ public class GameState_End : GameState_Base
         manager.OnGameOver.Invoke();
         manager.zombieManager.StopSpawningZombies(true);
         manager.StopCurrentCoroutine();
+        manager.endWaveText.text = "Survived " + manager.wave + " Waves";
     }
 
     public override void ExitState(GameManager manager)

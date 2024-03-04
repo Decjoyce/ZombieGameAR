@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    public UnityEvent OnGameStart, OnRoundStart, OnRoundEnd, OnGameOver;
+    public UnityEvent OnGameStart, OnRoundStart, OnRoundEnd, OnGameOver, OnGameReset;
 
     //Game States (essentially gamemodes)
     GameState_Base currentState;
@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI endWaveText;
 
+    public ARSession arSesh;
     public ARPlaneManager arPlaneManager;
     public XROrigin xrOrigin;
 
@@ -105,8 +107,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        wave = 0;
-        ChangeState("TIMED");
+        state_Start = new GameState_Start();
+        state_Timed = new GameState_Timed();
+        state_End = new GameState_End();
+        ChangeState("START");
+        player.ResetStuff();
+        ScoreManager.instance.ResetScore();
+        OnGameReset.Invoke();
     }
 
     IEnumerator QuitGame()
