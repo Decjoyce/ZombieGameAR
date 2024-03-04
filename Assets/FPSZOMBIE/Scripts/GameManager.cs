@@ -136,8 +136,8 @@ public class GameManager : MonoBehaviour
     IEnumerator RoundDelay()
     {
         zombieManager.StopSpawningZombies(true);
-        Instantiate(NukePrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        Destroy(NukePrefab, 11f);
+        GameObject newNuke = Instantiate(NukePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Destroy(newNuke, 11f);
         OnRoundEnd.Invoke();
         player.SwitchState("HAND");
 

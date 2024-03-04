@@ -20,6 +20,8 @@ public class NewZombieManager : MonoBehaviour
     [SerializeField] Transform origin;
     Transform[] arPlanes;
 
+
+
     public static NewZombieManager instance;
     private void Awake()
     {

@@ -8774,7 +8774,7 @@ MonoBehaviour:
     maxCount: 0
   - enemyPrefab: {fileID: 7384711646562833215, guid: 596ef54020fbe3d4e80ef7a0ea228b10,
       type: 3}
-    cost: 5
+    cost: 1
     requiredWaveToSpawn: 4
     maxCount: 0
   - enemyPrefab: {fileID: 7855224373131130083, guid: 8c6e9fd83d767544c88684f35c945f35,
