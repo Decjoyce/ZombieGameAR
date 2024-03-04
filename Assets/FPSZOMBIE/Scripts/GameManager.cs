@@ -105,7 +105,8 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        StartCoroutine(QuitGame());
+        wave = 0;
+        ChangeState("TIMED");
     }
 
     IEnumerator QuitGame()
