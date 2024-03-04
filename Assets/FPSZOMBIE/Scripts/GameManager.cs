@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     //References
     public NewZombieManager zombieManager;
     public Player_FPS player;
+    public GameObject NukePrefab;
 
     /// UI
     public GameObject startButton;
@@ -135,6 +136,8 @@ public class GameManager : MonoBehaviour
     IEnumerator RoundDelay()
     {
         zombieManager.StopSpawningZombies(true);
+        Instantiate(NukePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Destroy(NukePrefab, 11f);
         OnRoundEnd.Invoke();
         player.SwitchState("HAND");
 
