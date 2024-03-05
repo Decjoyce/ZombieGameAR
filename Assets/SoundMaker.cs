@@ -6,6 +6,8 @@ public class SoundMaker : MonoBehaviour
 {
     AudioSource source;
     [SerializeField] float interval = 5f;
+    [SerializeField] bool playSounds;
+    [SerializeField] AudioClip[] clips;
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -19,7 +21,8 @@ public class SoundMaker : MonoBehaviour
 
     public void PlaySound()
     {
-        //source.PlayOneShot(clip);
+        if(playSounds)
+            source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
         SoundDisplayer.instance.TranslateSound(transform.position);
     }
 }
