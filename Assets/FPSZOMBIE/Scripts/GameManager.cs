@@ -117,6 +117,12 @@ public class GameManager : MonoBehaviour
         OnGameReset.Invoke();
     }
 
+    public void LetArWork()
+    {
+        arPlaneManager.requestedDetectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal;
+        arPlaneManager.enabled = true;
+    }
+
     IEnumerator QuitGame()
     {
         yield return new WaitForSecondsRealtime(10f);

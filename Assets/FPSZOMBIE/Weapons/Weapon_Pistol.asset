@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_Pistol
   m_EditorClassIdentifier: 
   type: PISTOL
-  damage: 10
+  damage: 1
   fireRate: 2
   range: 20
   reloadSpeed: 1

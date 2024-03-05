@@ -1023,6 +1023,7 @@ GameObject:
   - component: {fileID: 6523532988195437113}
   - component: {fileID: 3765189990385173062}
   - component: {fileID: 7756640361964933039}
+  - component: {fileID: 7649856258328800773}
   m_Layer: 2
   m_Name: Big Zombie
   m_TagString: Untagged
@@ -1141,6 +1142,19 @@ CapsuleCollider:
   m_Height: 3.761927
   m_Direction: 2
   m_Center: {x: 0, y: 2.3159962, z: 1.765633}
+--- !u!114 &7649856258328800773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855224373131130083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f470dc5dccdd829419b50b66f6ac92f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 3
 --- !u!1 &8106641961512484094
 GameObject:
   m_ObjectHideFlags: 0

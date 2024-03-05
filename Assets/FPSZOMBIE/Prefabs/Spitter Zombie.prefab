@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 2422371084381888764}
   - component: {fileID: 2025575803165774903}
   - component: {fileID: 1701699915795676304}
+  - component: {fileID: 8210816042370351326}
   m_Layer: 2
   m_Name: Spitter Zombie
   m_TagString: Untagged
@@ -1002,6 +1003,19 @@ CapsuleCollider:
   m_Height: 5.23
   m_Direction: 2
   m_Center: {x: 0, y: 0.69, z: 2.46}
+--- !u!114 &8210816042370351326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7384711646562833215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f470dc5dccdd829419b50b66f6ac92f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 3
 --- !u!1 &7581222518883585310
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_Shotgun
   m_EditorClassIdentifier: 
   type: SHOTGUN
-  damage: 3
+  damage: 1
   fireRate: 0.5
   range: 4
   reloadSpeed: 2

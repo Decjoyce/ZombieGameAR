@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 2376831166810739328}
   - component: {fileID: 1171419762204219712}
   - component: {fileID: 8694651908471854751}
+  - component: {fileID: 7628444276700347841}
   m_Layer: 2
   m_Name: Running_Zombie
   m_TagString: Untagged
@@ -837,6 +838,19 @@ MonoBehaviour:
   headCol: {fileID: 1118297743069313950}
   tursoPos: {fileID: 5958054392179913819}
   headPos: {fileID: 9113024237020949875}
+--- !u!114 &7628444276700347841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604492185378260813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f470dc5dccdd829419b50b66f6ac92f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 3
 --- !u!1 &2609576497256244675
 GameObject:
   m_ObjectHideFlags: 0

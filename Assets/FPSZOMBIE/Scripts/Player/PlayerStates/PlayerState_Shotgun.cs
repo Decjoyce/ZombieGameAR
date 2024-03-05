@@ -57,9 +57,7 @@ public class PlayerState_Shotgun : PlayerState_Base
     }
 
     void ShootShotGun(Player_FPS manager)
-    {
-        //Tracks how many times a zombie is hit and then multiplies that by damage
-        int zombieHits = 0;            
+    {     
         RaycastHit hit;
         Zombie_Health zombieHealth = null;
         for (int i = 0; i < 7; i++)
@@ -72,7 +70,7 @@ public class PlayerState_Shotgun : PlayerState_Base
                 if (hit.transform.CompareTag("Zombie/Turso") || hit.transform.CompareTag("Zombie/Head"))
                 {
                     zombieHealth = hit.transform.GetComponentInParent<Zombie_Health>();
-                    zombieHits++;
+                    zombieHealth.TakeDamage(manager.currentWeapon.damage);
                     Debug.Log("Hit " + hit.transform.name);
                 }
                 DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
@@ -80,10 +78,6 @@ public class PlayerState_Shotgun : PlayerState_Base
             }
             else
                 manager.SpawnBulletTrail(manager.cam.transform.position + manager.cam.transform.forward * manager.currentWeapon.range + (horiSpread + vertSpread));
-        }
-        if(zombieHits > 0)
-        {
-            zombieHealth.TakeDamage(manager.currentWeapon.damage * zombieHits);
         }
 
     }

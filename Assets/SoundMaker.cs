@@ -5,9 +5,11 @@ using UnityEngine;
 public class SoundMaker : MonoBehaviour
 {
     AudioSource source;
+    [SerializeField] float interval = 5f;
     private void Start()
     {
         source = GetComponent<AudioSource>();
+        InvokeRepeating("PlaySound", 0f, interval);
     }
 
     private void Update()
