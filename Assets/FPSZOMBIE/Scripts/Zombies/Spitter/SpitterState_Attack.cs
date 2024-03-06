@@ -58,6 +58,8 @@ public class SpitterState_Attack : SpitterState_Base
         
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
 
+        manager.spitting.PlayOneShot(manager.spit_Sound);
+
         Vector3 forceToAdd = manager.transform.forward * manager.throwForce + manager.transform.up * manager.throwUpwardForce;
 
         projectileRB.AddForce(forceToAdd, ForceMode.Impulse);

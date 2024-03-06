@@ -8,6 +8,8 @@ public class Zombie_Spitter : MonoBehaviour
     public GameObject player;
     public PlayerHealth playerHealth;
     public Animator anim;
+    public AudioSource spitting;
+    public AudioClip spit_Sound;
 
     public Zombie_Health zombieHealth;
 
@@ -37,6 +39,7 @@ public class Zombie_Spitter : MonoBehaviour
     {
         player = PlayerManagement.instance.player;
         playerHealth = PlayerManagement.instance.playerHealth;
+        spitting = GetComponent<AudioSource>();
 
         currentState = state_follow;
         currentState.EnterState(this);
@@ -76,6 +79,7 @@ public class Zombie_Spitter : MonoBehaviour
             case "ATTACK":
                 currentState = state_attack;
                 anim.SetBool("IsAttacking", true);
+                
                 break;
             case "STAGGER":
                 currentState = state_stagger;
