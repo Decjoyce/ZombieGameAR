@@ -8200,7 +8200,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7384711646562833215, guid: 596ef54020fbe3d4e80ef7a0ea228b10,
       type: 3}
     cost: 2
-    requiredWaveToSpawn: 3
+    requiredWaveToSpawn: 4
     maxCount: 2
   - enemyPrefab: {fileID: 7855224373131130083, guid: 8c6e9fd83d767544c88684f35c945f35,
       type: 3}
@@ -8210,7 +8210,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 2604492185378260813, guid: 9fbf8c479e5e8f74e82312f721e01c93,
       type: 3}
     cost: 2
-    requiredWaveToSpawn: 0
+    requiredWaveToSpawn: 3
     maxCount: 2
   - enemyPrefab: {fileID: 8356895879033955745, guid: 5421e3ef5914a8e4d9ec512f56573844,
       type: 3}
