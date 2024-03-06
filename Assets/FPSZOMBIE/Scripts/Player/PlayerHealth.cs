@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     Player_FPS dad;
-    [SerializeField] float maxHealth;
+    public float maxHealth;
     [SerializeField] float regenDelay;
     [SerializeField] float regenRate;
     public float currentHealth;
