@@ -60,6 +60,7 @@ public class PlayerState_Bazooka : PlayerState_Base
     {
 
         RaycastHit hit;
+        manager.audio.PlayOneShot(manager.clip);
         if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward, out hit, manager.currentWeapon.range))
         {
             manager.HelpInstantiate(manager.currentWeapon.impact, hit.point, Quaternion.Euler(Vector3.zero));

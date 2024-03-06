@@ -10,6 +10,8 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     Shoot shoot;
     PlayerControls playerControls;
     PlayerHealth health;
+    public AudioSource audio;
+    public AudioClip clip;
 
     public Transform cam;
     [SerializeField] Transform firePoint;
@@ -48,6 +50,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
         health = GetComponent<PlayerHealth>();
 
         shoot = GetComponent<Shoot>();
+        audio = GetComponent<AudioSource>();
     }
 
     void OnEnable()

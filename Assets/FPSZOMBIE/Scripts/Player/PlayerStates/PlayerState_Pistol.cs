@@ -16,6 +16,7 @@ public class PlayerState_Pistol : PlayerState_Base
     RaycastHit hit;
 
 
+
     public override void EnterState(Player_FPS manager)
     {
         currentAmmo = manager.currentWeapon.magCapacity;
@@ -38,6 +39,7 @@ public class PlayerState_Pistol : PlayerState_Base
         DebugTextDisplayer.instance.ChangeText("Shot");
         if(canShoot && currentAmmo > 0)
         {
+            manager.audio.PlayOneShot(manager.clip);
             if (Physics.Raycast(manager.cam.transform.position, manager.cam.transform.forward, out hit, manager.currentWeapon.range))
             {
                 if (hit.transform.CompareTag("Zombie/Turso"))

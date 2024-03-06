@@ -33,6 +33,8 @@ public class PlayerState_Shotgun : PlayerState_Base
 
         if(canShoot && currentAmmo > 0)
         {
+            manager.audio.PlayOneShot(manager.clip);
+
             ShootShotGun(manager);
 
             currentAmmo--;
