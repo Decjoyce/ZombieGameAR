@@ -1092,7 +1092,8 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   anim: {fileID: 495830081301763509}
   zombieHealth: {fileID: 3765189990385173062}
-  availableDrops: []
+  availableDrops:
+  - {fileID: 768581801493604762, guid: d21f5e40cf1744d4d9c9dcae24881a5e, type: 3}
   dropChance: 0
   speed_movement: 0.2
   speed_attack: 4.33
@@ -1155,6 +1156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 3
+  playSounds: 0
+  clips: []
 --- !u!1 &8106641961512484094
 GameObject:
   m_ObjectHideFlags: 0

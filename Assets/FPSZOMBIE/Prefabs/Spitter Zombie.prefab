@@ -951,7 +951,8 @@ MonoBehaviour:
   spitting: {fileID: 1710586628241278602}
   spit_Sound: {fileID: 8300000, guid: cf5df7d8dbb441b4ea406e31e152c108, type: 3}
   zombieHealth: {fileID: 0}
-  availableDrops: []
+  availableDrops:
+  - {fileID: 768581801493604762, guid: d21f5e40cf1744d4d9c9dcae24881a5e, type: 3}
   dropChance: 0
   speed_movement: 0.4
   speed_attack: 0.8
