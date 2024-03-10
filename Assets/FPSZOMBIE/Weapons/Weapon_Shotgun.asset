@@ -53,4 +53,4 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
-  firingSound: {fileID: 8300000, guid: 85f2e503e5c96f44a977a088b441eb78, type: 3}
+  firingSound: {fileID: 8300000, guid: d6187d01489548e49aa7c52216fba972, type: 3}
