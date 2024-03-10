@@ -21,7 +21,7 @@ MonoBehaviour:
   reserveAmmo: 3
   unlimited: 0
   crosshair: {fileID: -1720050605, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
-  impact: {fileID: 3535663379968393527, guid: 95b3cc400c5685e4e87b61673c861aac, type: 3}
+  impact: {fileID: 7549277733117397941, guid: e5dcae00c536f4946be3b38dee3b68b5, type: 3}
   trailSize: 0.004
   trailColor:
     serializedVersion: 2
@@ -53,3 +53,4 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
+  firingSound: {fileID: 8300000, guid: 85f2e503e5c96f44a977a088b441eb78, type: 3}

@@ -22,4 +22,5 @@ public class WeaponType_Base : ScriptableObject
     public GameObject impact;
     public float trailSize;
     public Gradient trailColor;
+    public AudioClip firingSound;
 }
