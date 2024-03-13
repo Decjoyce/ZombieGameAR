@@ -74,6 +74,7 @@ public class PlayerState_Shotgun : PlayerState_Base
                     zombieHealth = hit.transform.GetComponentInParent<Zombie_Health>();
                     zombieHealth.TakeDamage(manager.currentWeapon.damage);
                     Debug.Log("Hit " + hit.transform.name);
+                    manager.HelpInstantiate(manager.currentWeapon.impact, hit.point, Quaternion.Euler(hit.normal));
                 }
                 DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
                 manager.SpawnBulletTrail(hit.point);

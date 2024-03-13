@@ -48,6 +48,7 @@ public class PlayerState_Pistol : PlayerState_Base
                     zombieHealth.TakeDamage(manager.currentWeapon.damage);
 
                     DebugTextDisplayer.instance.ChangeText("Hit Zombie");
+                    manager.HelpInstantiate(manager.currentWeapon.impact, hit.point, Quaternion.Euler(hit.normal));
                 }
                 if (hit.transform.CompareTag("Zombie/Head"))
                 {
@@ -55,6 +56,7 @@ public class PlayerState_Pistol : PlayerState_Base
                     zombieHealth.TakeDamage(manager.currentWeapon.damage * 2, headShot: true);
 
                     DebugTextDisplayer.instance.ChangeText("HEADSHOT");
+                    manager.HelpInstantiate(manager.currentWeapon.impact, hit.point, Quaternion.Euler(hit.normal));
                 }
 
                 Debug.Log("HIT");
