@@ -8206,7 +8206,7 @@ MonoBehaviour:
       type: 3}
     cost: 2
     requiredWaveToSpawn: 7
-    maxCount: 1
+    maxCount: 2
   - enemyPrefab: {fileID: 2604492185378260813, guid: 9fbf8c479e5e8f74e82312f721e01c93,
       type: 3}
     cost: 2
@@ -8217,6 +8217,11 @@ MonoBehaviour:
     cost: 1
     requiredWaveToSpawn: 6
     maxCount: 0
+  - enemyPrefab: {fileID: 4260955069296705980, guid: f063915111019784681a6ebf8b28cd4b,
+      type: 3}
+    cost: 3
+    requiredWaveToSpawn: 10
+    maxCount: 1
   enemiesToSpawn: []
   enemiesAlive: []
   waveValueMultiplier: 5
