@@ -10,6 +10,7 @@ public class Health_Pickup : MonoBehaviour
     private void Start()
     {
         playerHealth = GameManager.instance.player.health;
+        Destroy(gameObject, 15f);
     }
 
 

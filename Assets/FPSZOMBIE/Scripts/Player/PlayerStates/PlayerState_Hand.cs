@@ -17,7 +17,7 @@ public class PlayerState_Hand : PlayerState_Base
     public override void ExitState(Player_FPS manager)
     {
         manager.text.gameObject.SetActive(true);
-        manager.crosshairs.transform.localScale = new Vector3(1.75f, 1.75f, 1.75f);
+        manager.crosshairs.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public override void FrameUpdate(Player_FPS manager)
