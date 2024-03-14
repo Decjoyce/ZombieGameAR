@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpittyBall : MonoBehaviour
 {
-    [SerializeField] float damage;
+    public float damage;
 
     private void Start()
     {

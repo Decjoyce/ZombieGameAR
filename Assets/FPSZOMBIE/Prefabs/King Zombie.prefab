@@ -995,10 +995,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3148a606bea48e14a8202a785b26579b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
+  health: 50
   currentHealth: 0
   DeadSeconds: 3
-  scoreAmount: 75
+  scoreAmount: 500
   zombie: {fileID: 0}
   tursoCol: {fileID: 1074399238968250769}
   headCol: {fileID: 6126160906703389805}
