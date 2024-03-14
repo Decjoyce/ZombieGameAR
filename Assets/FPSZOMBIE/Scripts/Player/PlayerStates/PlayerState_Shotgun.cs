@@ -16,7 +16,7 @@ public class PlayerState_Shotgun : PlayerState_Base
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo = manager.currentWeapon.reserveAmmo;
         reloadSpeed = manager.currentWeapon.reloadSpeed;
-        manager.text.text = reserveAmmo + "|" + currentAmmo;
+        //manager.text.text = reserveAmmo + "|" + currentAmmo;
     }
 
     public override void FrameUpdate(Player_FPS manager)
@@ -38,7 +38,7 @@ public class PlayerState_Shotgun : PlayerState_Base
             ShootShotGun(manager);
 
             currentAmmo--;
-            manager.text.text = reserveAmmo + "|" + currentAmmo;
+            //manager.text.text = reserveAmmo + "|" + currentAmmo;
 
             if (currentAmmo > 0)
             {
@@ -49,7 +49,6 @@ public class PlayerState_Shotgun : PlayerState_Base
             {
                 if (reserveAmmo == 0)
                 {
-                    DebugTextDisplayer.instance.ChangeText("Out of Ammo");
                     manager.ReturnToDefaultWeapon();
                 }
                 manager.OnReload();
@@ -76,7 +75,6 @@ public class PlayerState_Shotgun : PlayerState_Base
                     Debug.Log("Hit " + hit.transform.name);
                     manager.HelpInstantiate(manager.currentWeapon.impact, hit.point, Quaternion.Euler(hit.normal));
                 }
-                DebugTextDisplayer.instance.ChangeText("Hit " + hit.transform.name);
                 manager.SpawnBulletTrail(hit.point);
             }
             else
@@ -87,13 +85,11 @@ public class PlayerState_Shotgun : PlayerState_Base
 
     public override IEnumerator Reload(Player_FPS manager)
     {
-        DebugTextDisplayer.instance.ChangeText("Reloading");
         Handheld.Vibrate();
         yield return new WaitForSeconds(reloadSpeed);
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo--;
-        DebugTextDisplayer.instance.ChangeText("Reloaded!");
-        manager.text.text = reserveAmmo + "|" + currentAmmo;
+        //manager.text.text = reserveAmmo + "|" + currentAmmo;
     }
 
 }
