@@ -20,6 +20,7 @@ public class GameState_Start : GameState_Base
         //manager.arPlaneManager.requestedDetectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.None;
         //manager.arPlaneManager.enabled = false;
         manager.source.Stop();
+        manager.player.ReturnToDefaultWeapon();
     }
 
     public override void FrameUpdate(GameManager manager)

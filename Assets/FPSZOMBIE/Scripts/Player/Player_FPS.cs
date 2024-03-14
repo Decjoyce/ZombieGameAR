@@ -69,7 +69,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     void Start()
     {
-        currentState = state_Pistol;
+        currentState = state_Hand;
         currentState.EnterState(this);
     }
 

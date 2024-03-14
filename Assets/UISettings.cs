@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class UISettings : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI[] uiText, uiAmmo;
+    [SerializeField] TextMeshProUGUI[] uiText;
+    [SerializeField] GameObject[] uiAmmo; 
     [SerializeField] Image crosshair; 
     [SerializeField] GameObject damageIndicator;
 
-    [SerializeField] TextMeshProUGUI[] uiText_Showcase, uiAmmo_Showcase;
+    [SerializeField] TextMeshProUGUI uiText_Showcase;
+    [SerializeField] Image[] uiAmmo_Showcase;
     [SerializeField] Image crosshair_Showcase, damageIndicator_Showcase;
 
     int uiText_Colour, uiAmmo_Colour, crosshair_Colour, damageIndicator_Colour;
@@ -93,6 +95,7 @@ public class UISettings : MonoBehaviour
         {
             text.color = GetColor(uiText_Colour);
         }
+        uiText_Showcase.color = GetColor(uiText_Colour);
     }
 
     public void ChangeAmmoColour(bool minus)
@@ -109,9 +112,15 @@ public class UISettings : MonoBehaviour
             if (uiAmmo_Colour < 0)
                 uiAmmo_Colour = 9;
         }
-        foreach (TextMeshProUGUI text in uiAmmo)
+
+        foreach (GameObject ammo in uiAmmo)
         {
-            text.color = GetColor(uiAmmo_Colour);
+            ammo.GetComponent<AmmoHelper>().ChangeAmmoColor(GetColor(uiAmmo_Colour));
+        }
+
+        foreach (Image bullet in uiAmmo_Showcase)
+        {
+            bullet.color = GetColor(uiAmmo_Colour);
         }
     }
 
