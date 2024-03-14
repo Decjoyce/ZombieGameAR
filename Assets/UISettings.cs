@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class UISettings : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI[] uiText;
-    [SerializeField] GameObject[] uiAmmo; 
-    [SerializeField] Image crosshair; 
-    [SerializeField] GameObject damageIndicator;
+    #region UI
+    [Header("UI")]
+    public TextMeshProUGUI[] uiText;
+    public GameObject[] uiAmmo; 
+    public Image crosshair; 
+    public GameObject damageIndicator;
 
-    [SerializeField] TextMeshProUGUI uiText_Showcase;
-    [SerializeField] Image[] uiAmmo_Showcase;
-    [SerializeField] Image crosshair_Showcase, damageIndicator_Showcase;
+    public TextMeshProUGUI uiText_Showcase;
+    public Image[] uiAmmo_Showcase;
+    public Image crosshair_Showcase, damageIndicator_Showcase;
 
     int uiText_Colour, uiAmmo_Colour, crosshair_Colour, damageIndicator_Colour;
     int crosshair_Size = 3, damageIndicator_Size = 1;
@@ -195,4 +197,89 @@ public class UISettings : MonoBehaviour
         damageIndicator.transform.GetChild(0).localScale = (Vector2.one * 0.5f) * damageIndicator_Size;
         damageIndicator_Showcase.GetComponent<RectTransform>().localScale = (Vector2.one * 0.5f) * damageIndicator_Size;
     }
+    #endregion
+
+    #region Gameplay
+
+    [Header("Gameplay")]
+    [SerializeField] GameObject normalZombie;
+    [SerializeField] GameObject runner; 
+    [SerializeField] GameObject spitter; 
+    [SerializeField] GameObject doggo; 
+    [SerializeField] GameObject bigZombie;
+    [SerializeField] GameObject kingZombie;
+
+
+
+    int normalZombie_Difficulty, runner_Difficulty, spitter_Difficulty, doggo_Difficulty, bigZombie_Difficulty, kingZombie_Difficulty;
+    int normalZombie_Speed, runner_Speed, spitter_Speed, doggo_Speed, bigZombie_Speed, kingZombie_Speed;
+
+    float GetSpeed(int i)
+    {
+        /*        switch (i)
+                {
+                    case 0:
+                        return 0.01f;
+                    case 1:
+                        return 0.05f;
+                    case 2:
+                        return 0.1f;
+                    case 3:
+                        return 0.15f;
+                    case 4:
+                        return 0.2f;
+                    case 5:
+                        return 0.25f;
+                    case 6:
+                        return 0.3f;
+                    case 7:
+                        return 0.4f;
+                    case 8:
+                        return 0.5f;
+                    default:
+                        return 0.2f;
+                }*/
+        if (i == 0)
+            return 0.01f;
+        else
+            return ExtensionMethods.Map(i, 1, 20, 0.05f, 1);
+    }
+
+    public void ChangeNormalZombieDifficulty(bool minus)
+    {
+        if (!minus)
+        {
+            normalZombie_Difficulty++;
+            if (normalZombie_Difficulty > 3)
+                normalZombie_Difficulty = 1;
+        }
+        else
+        {
+            normalZombie_Difficulty--;
+            if (normalZombie_Difficulty < 1)
+                normalZombie_Difficulty = 3;
+        }
+
+        normalZombie.GetComponent<Zombie_Health>().health = normalZombie_Difficulty;
+    }
+
+    public void ChangeNormalZombieSpeed(bool minus)
+    {
+        if (!minus)
+        {
+            normalZombie_Speed++;
+            if (normalZombie_Speed > 3)
+                normalZombie_Speed = 1;
+        }
+        else
+        {
+            normalZombie_Speed--;
+            if (normalZombie_Speed < 1)
+                normalZombie_Speed = 3;
+        }
+
+        normalZombie.GetComponent<Zombie_FPS>().speed_movement = GetSpeed(normalZombie_Speed);
+        Debug.Log(GetSpeed(normalZombie_Speed));
+    }
+    #endregion
 }

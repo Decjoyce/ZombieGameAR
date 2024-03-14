@@ -1095,7 +1095,7 @@ MonoBehaviour:
   availableDrops:
   - {fileID: 768581801493604762, guid: d21f5e40cf1744d4d9c9dcae24881a5e, type: 3}
   dropChance: 1
-  speed_movement: 0.2
+  speed_movement: 0.1
   speed_attack: 4.33
   damage: 8
   staggerTime: 2
