@@ -209,40 +209,32 @@ public class UISettings : MonoBehaviour
     [SerializeField] GameObject bigZombie;
     [SerializeField] GameObject kingZombie;
 
-
+    [SerializeField] TextMeshProUGUI normalZombie_Text;
+    [SerializeField] TextMeshProUGUI runner_Text;
+    [SerializeField] TextMeshProUGUI spitter_Text;
+    [SerializeField] TextMeshProUGUI doggo_Text;
+    [SerializeField] TextMeshProUGUI bigZombie_Text;
+    [SerializeField] TextMeshProUGUI kingZombie_Text;
 
     int normalZombie_Difficulty, runner_Difficulty, spitter_Difficulty, doggo_Difficulty, bigZombie_Difficulty, kingZombie_Difficulty;
     int normalZombie_Speed, runner_Speed, spitter_Speed, doggo_Speed, bigZombie_Speed, kingZombie_Speed;
+    int normalZombie_Damage, runner_Damage, spitter_Damage, doggo_Damage, bigZombie_Damage, kingZombie_Damage;
 
     float GetSpeed(int i)
     {
-        /*        switch (i)
-                {
-                    case 0:
-                        return 0.01f;
-                    case 1:
-                        return 0.05f;
-                    case 2:
-                        return 0.1f;
-                    case 3:
-                        return 0.15f;
-                    case 4:
-                        return 0.2f;
-                    case 5:
-                        return 0.25f;
-                    case 6:
-                        return 0.3f;
-                    case 7:
-                        return 0.4f;
-                    case 8:
-                        return 0.5f;
-                    default:
-                        return 0.2f;
-                }*/
         if (i == 0)
             return 0.01f;
         else
             return ExtensionMethods.Map(i, 1, 20, 0.05f, 1);
+    }
+
+    int GetDamage(int i)
+    {
+        /*        if (i == 0)
+                    return 0.01f;
+                else
+                    return ExtensionMethods.Map(i, 1, 20, 0.05f, 1);*/
+        return 1;
     }
 
     public void ChangeNormalZombieDifficulty(bool minus)
@@ -250,17 +242,18 @@ public class UISettings : MonoBehaviour
         if (!minus)
         {
             normalZombie_Difficulty++;
-            if (normalZombie_Difficulty > 3)
+            if (normalZombie_Difficulty > 6)
                 normalZombie_Difficulty = 1;
         }
         else
         {
             normalZombie_Difficulty--;
             if (normalZombie_Difficulty < 1)
-                normalZombie_Difficulty = 3;
+                normalZombie_Difficulty = 6;
         }
 
         normalZombie.GetComponent<Zombie_Health>().health = normalZombie_Difficulty;
+        normalZombie_Text.text = "Health: " + normalZombie_Difficulty + "<br>Speed: " + GetSpeed(normalZombie_Speed) + "<br>Damage: " + GetDamage(normalZombie_Damage);
     }
 
     public void ChangeNormalZombieSpeed(bool minus)
@@ -268,18 +261,39 @@ public class UISettings : MonoBehaviour
         if (!minus)
         {
             normalZombie_Speed++;
-            if (normalZombie_Speed > 3)
-                normalZombie_Speed = 1;
+            if (normalZombie_Speed > 20)
+                normalZombie_Speed = 0;
         }
         else
         {
             normalZombie_Speed--;
-            if (normalZombie_Speed < 1)
-                normalZombie_Speed = 3;
+            if (normalZombie_Speed < 0)
+                normalZombie_Speed = 20;
         }
 
-        normalZombie.GetComponent<Zombie_FPS>().speed_movement = GetSpeed(normalZombie_Speed);
-        Debug.Log(GetSpeed(normalZombie_Speed));
+        float newSpeed = GetSpeed(normalZombie_Speed);
+        normalZombie.GetComponent<Zombie_FPS>().speed_movement = newSpeed;
+        normalZombie_Text.text = "Health: " + normalZombie_Difficulty + "<br>Speed: " + newSpeed.ToString("0.00") + "<br>Damage: " + GetDamage(normalZombie_Damage);
+    }
+
+    public void ChangeNormalZombieDamage(bool minus)
+    {
+        if (!minus)
+        {
+            normalZombie_Damage++;
+            if (normalZombie_Damage > 3)
+                normalZombie_Damage = 0;
+        }
+        else
+        {
+            normalZombie_Damage--;
+            if (normalZombie_Damage < 0)
+                normalZombie_Damage = 3;
+        }
+
+        int newDam = GetDamage(normalZombie_Damage);
+        normalZombie.GetComponent<Zombie_FPS>().damage = newDam;
+        normalZombie_Text.text = "Health: " + normalZombie_Difficulty + "<br>Speed: " + GetSpeed(normalZombie_Speed) + "<br>Damage: " + newDam;
     }
     #endregion
 }
