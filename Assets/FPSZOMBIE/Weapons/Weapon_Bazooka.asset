@@ -21,6 +21,8 @@ MonoBehaviour:
   reserveAmmo: 2
   unlimited: 0
   crosshair: {fileID: 387170347, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
+  ammoCounter: {fileID: 7686370587263769385, guid: ab5ce4e1d3b5ca34e8e585d8002c8342,
+    type: 3}
   impact: {fileID: 6066130053918307347, guid: ba5d4822988827b4187e24ac52f5a0ab, type: 3}
   trailSize: 0.5
   trailColor:

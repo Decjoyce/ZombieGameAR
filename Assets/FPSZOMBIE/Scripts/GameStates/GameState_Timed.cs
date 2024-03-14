@@ -8,6 +8,7 @@ public class GameState_Timed : GameState_Base
     float waveTimeMultiplier = 1.5f;
     public override void EnterState(GameManager manager)
     {
+        ogWaveTime = 30f;
         manager.waveTime = ogWaveTime;
         manager.zombieManager.StartSpawningZombies();
         manager.CallCoroutine(Delay(manager));

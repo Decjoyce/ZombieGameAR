@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1c6ebaa4582ec4788352f62ccc5f22, type: 3}
   m_Name: Weapon_Revolver
   m_EditorClassIdentifier: 
-  type: 
+  type: RIFLE
   damage: 5
   fireRate: 1
   range: 25
   reloadSpeed: 1.6
   magCapacity: 6
-  reserveAmmo: 12
+  reserveAmmo: 2
   unlimited: 0
   crosshair: {fileID: 1068637084, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
+  ammoCounter: {fileID: 0}
   impact: {fileID: 7549277733117397941, guid: e5dcae00c536f4946be3b38dee3b68b5, type: 3}
   trailSize: 0.007
   trailColor:

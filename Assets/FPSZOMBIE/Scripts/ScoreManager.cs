@@ -38,5 +38,7 @@ public class ScoreManager : MonoBehaviour
     public void ResetScore()
     {
         currentScore = 0;
+        scoreTextGameplay.text = "$" + currentScore;
+        scoreTextInterRound.text = "$" + currentScore;
     }
 }

@@ -25,6 +25,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public PlayerState_Pistol state_Pistol = new PlayerState_Pistol();
     public PlayerState_Shotgun state_Shotgun = new PlayerState_Shotgun();
     public PlayerState_Bazooka state_Bazooka = new PlayerState_Bazooka();
+    public PlayerState_Rifle state_Rifle = new PlayerState_Rifle();
 
     //Weapons
     public WeaponType_Base currentWeapon;
@@ -103,6 +104,9 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
                 break;
             case "BAZOOKA":
                 currentState = state_Bazooka;
+                break;
+            case "RIFLE":
+                currentState = state_Rifle;
                 break;
             default:
                 Debug.LogError("INVALID STATE: " + newState);

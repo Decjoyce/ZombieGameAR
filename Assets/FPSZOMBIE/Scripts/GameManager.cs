@@ -130,6 +130,8 @@ public class GameManager : MonoBehaviour
         player.ResetStuff();
         ScoreManager.instance.ResetScore();
         OnGameReset.Invoke();
+        wave = 1;
+        waveText.text = "Wave " + wave;
     }
 
     public void LetArWork()

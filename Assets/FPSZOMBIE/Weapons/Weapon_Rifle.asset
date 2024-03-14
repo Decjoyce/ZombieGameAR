@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1c6ebaa4582ec4788352f62ccc5f22, type: 3}
   m_Name: Weapon_Rifle
   m_EditorClassIdentifier: 
-  type: 
-  damage: 7
+  type: RIFLE
+  damage: 3
   fireRate: 0.7
   range: 40
   reloadSpeed: 3
   magCapacity: 8
-  reserveAmmo: 16
+  reserveAmmo: 2
   unlimited: 0
   crosshair: {fileID: 1068637084, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
   ammoCounter: {fileID: 0}

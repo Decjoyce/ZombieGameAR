@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,12 +12,24 @@ public class PlayerState_Shotgun : PlayerState_Base
     int currentAmmo;
     int reserveAmmo;
 
+    GameObject ammoCounter;
+    TextMeshProUGUI reserveUI;
+
     public override void EnterState(Player_FPS manager)
     {
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo = manager.currentWeapon.reserveAmmo;
         reloadSpeed = manager.currentWeapon.reloadSpeed;
-        //manager.text.text = reserveAmmo + "|" + currentAmmo;
+
+        ammoCounter = manager.HelpInstantiateAsChild(manager.currentWeapon.ammoCounter, manager.ammo);
+        reserveUI = ammoCounter.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        reserveUI.text = reserveAmmo.ToString();
+    }
+
+    public override void ExitState(Player_FPS manager)
+    {
+        manager.HelpDestroy(ammoCounter);
+        manager.StopReload();
     }
 
     public override void FrameUpdate(Player_FPS manager)
@@ -29,8 +42,6 @@ public class PlayerState_Shotgun : PlayerState_Base
 
     public override void TouchInput(Player_FPS manager)
     {
-        DebugTextDisplayer.instance.ChangeText("Shot");
-
         if(canShoot && currentAmmo > 0)
         {
             manager.audio.PlayOneShot(manager.clip);
@@ -38,7 +49,7 @@ public class PlayerState_Shotgun : PlayerState_Base
             ShootShotGun(manager);
 
             currentAmmo--;
-            //manager.text.text = reserveAmmo + "|" + currentAmmo;
+            ammoCounter.transform.GetChild(currentAmmo + 1).gameObject.SetActive(false);
 
             if (currentAmmo > 0)
             {
@@ -89,7 +100,11 @@ public class PlayerState_Shotgun : PlayerState_Base
         yield return new WaitForSeconds(reloadSpeed);
         currentAmmo = manager.currentWeapon.magCapacity;
         reserveAmmo--;
-        //manager.text.text = reserveAmmo + "|" + currentAmmo;
+        reserveUI.text = reserveAmmo.ToString();
+        for (int i = 1; i < ammoCounter.transform.childCount; i++)
+        {
+            ammoCounter.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
 }
