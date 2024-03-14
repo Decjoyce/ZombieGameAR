@@ -18,7 +18,7 @@ public class Zombie_FPS : MonoBehaviour
     public ZombieState_Dead state_dead = new ZombieState_Dead();
 
     public GameObject[] availableDrops;
-    [SerializeField] float dropChance;
+    [Range(0, 1)] public float dropChance;
 
     public float speed_movement;
     public float speed_attack;
@@ -82,5 +82,11 @@ public class Zombie_FPS : MonoBehaviour
                 break;
         }
         currentState.EnterState(this);
+    }
+
+    public void DropSomething()
+    {
+        if (Random.value <= dropChance)
+            Instantiate(availableDrops[Random.Range(0, availableDrops.Length)], transform.position, transform.rotation);
     }
 }

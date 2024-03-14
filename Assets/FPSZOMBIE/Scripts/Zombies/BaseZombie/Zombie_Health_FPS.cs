@@ -37,6 +37,9 @@ public class Zombie_Health_FPS : Zombie_Health
         zombie.SwitchState("DEAD");
         tursoCol.enabled = false;
         headCol.enabled = false;
+
+        zombie.DropSomething();
+
         base.Die();
     }
 }

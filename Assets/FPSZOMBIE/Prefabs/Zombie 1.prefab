@@ -2973,7 +2973,7 @@ MonoBehaviour:
   zombieHealth: {fileID: 0}
   availableDrops:
   - {fileID: 768581801493604762, guid: d21f5e40cf1744d4d9c9dcae24881a5e, type: 3}
-  dropChance: 0.25
+  dropChance: 0.2
   speed_movement: 0.1
   speed_attack: 0.25
   damage: 5
@@ -3065,6 +3065,7 @@ MonoBehaviour:
   playSounds: 1
   clips:
   - {fileID: 8300000, guid: a7beed688d114f244a8e7766611a7d30, type: 3}
+  - {fileID: 8300000, guid: 1cfcd82552ed3314b906bffe0532953e, type: 3}
 --- !u!82 &2354467297284554736
 AudioSource:
   m_ObjectHideFlags: 0

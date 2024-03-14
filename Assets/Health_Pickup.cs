@@ -7,22 +7,21 @@ public class Health_Pickup : MonoBehaviour
     [SerializeField] private float healthIncrease;
     private PlayerHealth playerHealth;
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
-        playerHealth = GameManager.instance.GetComponent<PlayerHealth>();
+        playerHealth = GameManager.instance.player.health;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && playerHealth.currentHealth > 0f)
+        if (other.gameObject.CompareTag("Player") && playerHealth.currentHealth > 0f && playerHealth.currentHealth < playerHealth.maxHealth)
         {
-            if(playerHealth.currentHealth < playerHealth.maxHealth) 
-            {
-                playerHealth.currentHealth += healthIncrease;
-                Destroy(gameObject);
-                Debug.Log(playerHealth.currentHealth);
-            }
+            playerHealth.currentHealth += healthIncrease;
+            if (playerHealth.currentHealth > playerHealth.maxHealth)
+                playerHealth.currentHealth = playerHealth.maxHealth;
+            Destroy(gameObject);
+            Debug.Log(playerHealth.currentHealth);
         }
     }
 }

@@ -953,7 +953,7 @@ MonoBehaviour:
   zombieHealth: {fileID: 0}
   availableDrops:
   - {fileID: 768581801493604762, guid: d21f5e40cf1744d4d9c9dcae24881a5e, type: 3}
-  dropChance: 0
+  dropChance: 1
   speed_movement: 0.4
   speed_attack: 0.8
   damage: 1.29

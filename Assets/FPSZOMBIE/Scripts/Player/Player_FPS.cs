@@ -9,7 +9,7 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 {
     Shoot shoot;
     PlayerControls playerControls;
-    PlayerHealth health;
+    public PlayerHealth health;
     public AudioSource audio;
     public AudioClip clip;
 

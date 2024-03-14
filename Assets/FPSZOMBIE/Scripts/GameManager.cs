@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public ARSession arSesh;
     public ARPlaneManager arPlaneManager;
     public XROrigin xrOrigin;
+    public float requiredPlaneSize;
 
     public GameObject shopPrefab;
 
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
     public float waveTime = 30f;
     public float score;
     public float roundDelay = 15f;
+
+    public AudioSource source;
+
 
     Coroutine currentCoroutine;
 
@@ -98,12 +102,23 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         if(xrOrigin.transform.GetChild(1).childCount > 0)
+        {
             ChangeState("TIMED");
+        }
     }
 
-    public void PauseGame()
+    public bool checkArPlaneSizes()
     {
+        bool yes = false;
+        for(int i = 1; i < xrOrigin.transform.GetChild(1).childCount; i++)
+        {
+            Mesh m = xrOrigin.transform.GetChild(1).GetChild(i).GetComponent<MeshFilter>().mesh;
+            Debug.Log(m.bounds.size.magnitude);
+            if (m.bounds.size.magnitude > requiredPlaneSize)
+                yes = true;
+        }
 
+        return yes;
     }
 
     public void ResetGame()
@@ -146,6 +161,7 @@ public class GameManager : MonoBehaviour
         Destroy(newNuke, 11f);
         OnRoundEnd.Invoke();
         player.SwitchState("HAND");
+        source.Play();
 
         Vector3 chestPos = xrOrigin.transform.GetChild(1).transform.GetChild(0).position;
         Vector3 newRot = Quaternion.LookRotation(player.transform.position - chestPos, Vector3.up).eulerAngles;
