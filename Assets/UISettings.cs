@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class UISettings : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI[] uiText, uiAmmo;
-    [SerializeField] Image crosshair, damageIndicator;
+    [SerializeField] Image crosshair; 
+    [SerializeField] GameObject damageIndicator;
 
     [SerializeField] TextMeshProUGUI[] uiText_Showcase, uiAmmo_Showcase;
     [SerializeField] Image crosshair_Showcase, damageIndicator_Showcase;
 
     int uiText_Colour, uiAmmo_Colour, crosshair_Colour, damageIndicator_Colour;
-    int crosshair_Size = 3;
+    int crosshair_Size = 3, damageIndicator_Size = 1;
 
     Color GetColor(int col)
     {
@@ -39,6 +40,8 @@ public class UISettings : MonoBehaviour
                 return Color.grey;
             case 9:
                 return Color.black;
+            case 10:
+                return new Color(0.6f, 0f, 0f);
             default:
                 return Color.white;
         }
@@ -64,6 +67,8 @@ public class UISettings : MonoBehaviour
                 return Vector2.one * 250f;
             case 7:
                 return Vector2.one * 275f;
+            case 8:
+                return Vector2.one * 300f;
             default:
                 return Vector2.one * 175f;
         }
@@ -122,7 +127,7 @@ public class UISettings : MonoBehaviour
         {
             crosshair_Colour--;
             if (crosshair_Colour < 0)
-                crosshair_Colour = 6;
+                crosshair_Colour = 9;
         }
         crosshair.color = GetColor(crosshair_Colour);
         crosshair_Showcase.color = GetColor(crosshair_Colour);
@@ -133,8 +138,8 @@ public class UISettings : MonoBehaviour
         if (!minus)
         {
             crosshair_Size++;
-            if (crosshair_Size > 7)
-                crosshair_Size = 7;
+            if (crosshair_Size > 8)
+                crosshair_Size = 8;
         }
         else
         {
@@ -151,15 +156,34 @@ public class UISettings : MonoBehaviour
         if (!minus)
         {
             damageIndicator_Colour++;
-            if (damageIndicator_Colour > 9)
+            if (damageIndicator_Colour > 10)
                 damageIndicator_Colour = 0;
         }
         else
         {
             damageIndicator_Colour--;
             if (damageIndicator_Colour < 0)
-                damageIndicator_Colour = 9;
+                damageIndicator_Colour = 10;
         }
-        damageIndicator.color = GetColor(damageIndicator_Colour);
+        damageIndicator.transform.GetChild(0).GetComponentInChildren<Image>().color = GetColor(damageIndicator_Colour);
+        damageIndicator_Showcase.color = GetColor(damageIndicator_Colour);
+    }
+
+    public void ChangeDamageIndicatorSize(bool minus)
+    {
+        if (!minus)
+        {
+            damageIndicator_Size++;
+            if (damageIndicator_Size > 3)
+                damageIndicator_Size = 3;
+        }
+        else
+        {
+            damageIndicator_Size--;
+            if (damageIndicator_Size < 1)
+                damageIndicator_Size = 1;
+        }
+        damageIndicator.transform.GetChild(0).localScale = (Vector2.one * 0.5f) * damageIndicator_Size;
+        damageIndicator_Showcase.GetComponent<RectTransform>().localScale = (Vector2.one * 0.5f) * damageIndicator_Size;
     }
 }

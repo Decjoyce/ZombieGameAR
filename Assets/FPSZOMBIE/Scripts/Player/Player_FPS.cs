@@ -29,10 +29,13 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     //Weapons
     public WeaponType_Base currentWeapon;
     public WeaponType_Base defaultWeapon;
+    public Transform ammo;
     public Image crosshairs;
     public Sprite handCrosshair;
     public TextMeshProUGUI text;
     public TextMeshProUGUI costText;
+
+    public Coroutine currentReload;
 
     float attackDelay;
     bool canShoot;
@@ -110,15 +113,19 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
 
     public void OnSingleTouch(InputAction.CallbackContext context)
     {
-        if (context.performed)
-            currentState.TouchInput(this);
+        //if (context.performed)
+            //currentState.TouchInput(this);
     }
 
     public void OnReload()
     {
-        StartCoroutine(currentState.Reload(this));
+        currentReload = StartCoroutine(currentState.Reload(this));
     }
 
+    public void StopReload()
+    {
+        StopCoroutine(currentReload);
+    }
 
     public void PickUpWeapon(WeaponType_Base newWeapon)
     {
@@ -136,12 +143,23 @@ public class Player_FPS : MonoBehaviour, PlayerControls.IBaseControlsActions
     public void ReturnToDefaultWeapon()
     {
         currentWeapon = defaultWeapon;
+        crosshairs.sprite = currentWeapon.crosshair;
         SwitchState(currentWeapon.type);
     }
 
     public void HelpInstantiate(GameObject obj, Vector3 pos, Quaternion rot)
     {
         Instantiate(obj, pos, rot);
+    }
+
+    public GameObject HelpInstantiateAsChild(GameObject obj, Transform parent)
+    {
+        return Instantiate(obj, parent);
+    }
+
+    public void HelpDestroy(GameObject obj, float delay = 0)
+    {
+        Destroy(obj, delay);
     }
 
     public void SpawnBulletTrail(Vector3 endPos)

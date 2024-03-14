@@ -41,7 +41,7 @@ public class SoundDisplayer : MonoBehaviour
             //Size
             float ySize = ExtensionMethods.Map(dis, maxAudibleRange, 0, 0, 1);
 
-            newIndicator.transform.GetChild(0).localScale = new(ySize, ySize, 1);
+            newIndicator.transform.GetChild(0).GetChild(0).localScale = new(ySize, ySize, 1);
 
             Destroy(newIndicator, indicatorDelay);
         }

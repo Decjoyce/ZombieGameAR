@@ -19,6 +19,7 @@ public class WeaponType_Base : ScriptableObject
 
     [Header("Assets")]
     public Sprite crosshair;
+    public GameObject ammoCounter;
     public GameObject impact;
     public float trailSize;
     public Gradient trailColor;

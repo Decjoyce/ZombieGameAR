@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: 0fc9dd20e49ccbd47af4996c419d70f7, type: 2}
   scoreManager: {fileID: 0}
-  cost: 200
+  cost: 350
 --- !u!1 &7315380054483250869
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: b0fbdb957d8348e4cb2588e3ad7d14bf, type: 2}
   scoreManager: {fileID: 0}
-  cost: 40
+  cost: 35
 --- !u!1001 &461064374032841941
 PrefabInstance:
   m_ObjectHideFlags: 0

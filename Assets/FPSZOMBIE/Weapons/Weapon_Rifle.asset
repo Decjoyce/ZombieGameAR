@@ -20,7 +20,8 @@ MonoBehaviour:
   magCapacity: 8
   reserveAmmo: 16
   unlimited: 0
-  crosshair: {fileID: 387170347, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
+  crosshair: {fileID: 1068637084, guid: 932560173f65b38428be2bc24e5f8017, type: 3}
+  ammoCounter: {fileID: 0}
   impact: {fileID: 7549277733117397941, guid: e5dcae00c536f4946be3b38dee3b68b5, type: 3}
   trailSize: 0.01
   trailColor:

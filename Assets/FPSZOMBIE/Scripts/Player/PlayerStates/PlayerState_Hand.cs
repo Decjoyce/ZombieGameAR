@@ -9,14 +9,11 @@ public class PlayerState_Hand : PlayerState_Base
 
     public override void EnterState(Player_FPS manager)
     {
-        manager.text.gameObject.SetActive(false);
-        DebugTextDisplayer.instance.ChangeText("Pickup Mode");
         manager.crosshairs.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
     }
 
     public override void ExitState(Player_FPS manager)
     {
-        manager.text.gameObject.SetActive(true);
         manager.crosshairs.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 

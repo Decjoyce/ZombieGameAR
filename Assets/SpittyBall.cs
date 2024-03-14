@@ -19,4 +19,9 @@ public class SpittyBall : MonoBehaviour
         }
         Debug.Log(other.name);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }
